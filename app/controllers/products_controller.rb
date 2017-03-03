@@ -2,24 +2,67 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @account = Account.find_by!(subdomain: params[:account_id])
+    @account = Account.find(params[:account_id])
   end
 
   def create
-    @account = Account.find_by!(subdomain: params[:account_id])
+    @account = Account.find(params[:account_id])
     @product = Product.new(product_params)
     @product.assign_attributes(account_id: @account.id)
     if @product.save
       redirect_to @account, notice: "Product has been added to account successfully."
     else
-      redirect_to new_product_path, alert: "There was an error adding product. Please try again."
+      redirect_to new_account_product_path, alert: "There was an error adding product. Please try again."
+    end
+  end
+
+  def show
+    @product = Product.find(params[:id])
+    @new_color = Color.new
+  end
+
+  def edit
+    @account = Account.find(params[:account_id])
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @account = Account.find(params[:account_id])
+    @product = Product.find(params[:id])
+    @product.assign_attributes(product_params)
+    if @product.save
+      redirect_to account_product_path(@product), notice: "Product has been updated"
+    else
+      redirect_to edit_account_product_path(@product), alert: "There was an error editting product. Please try again."
+    end
+  end
+
+  def color
+    @product = Product.find(params[:product_id])
+    @color = Color.find(params[:id])
+    @products_color = ProductsColor.find_by(product_id: @product.id, color_id: @color.id)
+    if @products_color.destroy
+      redirect_to account_product_path(account_id: @product.account_id, id: @product.id), notice: "Color has been removed"
+    else
+      redirect_to account_product_path(account_id: @product.account_id, id: @product.id), alert: "There was an error removing the color"
+    end
+  end
+
+  def assign_colors
+    @product = Product.find(params[:product_id])
+    @color = Color.find(params[:id])
+    @products_color = ProductsColor.new(product_id: @product.id, color_id: @color.id)
+    if @products_color.save
+      redirect_to account_product_path(account_id: @product.account_id, id: @product.id), notice: "Color has been added"
+    else
+      redirect_to account_product_path(account_id: @product.account_id, id: @product.id), alert: "There was an error adding the color"
     end
   end
 
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :product_number, :active, :product_page_url)
+    params.require(:product).permit(:id, :name, :description, :item_number,  :style_number, :vendor, :active, :product_page_url, :product_image, :account_id)
   end
 
 end

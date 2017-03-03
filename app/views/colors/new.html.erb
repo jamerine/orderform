@@ -1,0 +1,19 @@
+
+
+<div class="container">
+  <div class="row">
+    <%= link_to 'Back', account_product_path(account_id: @product.account_id, id: @product.id), class: 'btn btn-outline-secondary'%>
+  </div>
+  <br>
+  <div class="row">
+    <h3>Current Colors Available</h3>
+  </div>
+  <%= render partial: 'colors/all_colors', locals: { product: @product, colors: @colors} %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <h3>Create New Color</h3>
+  </div>
+<%= render partial: 'colors/new', locals: { product_id: @product.id, color: @color} %>
+</div>

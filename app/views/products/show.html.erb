@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <%= link_to 'Back', account_path(@product.account_id), class: 'btn btn-outline-secondary' %>
+  </div>
+  <div class="jumbotron jumbotron-white">
+    <%= link_to 'Edit', edit_account_product_path(@product) %>
+    <div class="row">
+
+      <div class="media">
+          <%= image_tag(@product.product_image_url(:thumb), class: 'img-thumbnail d-flex align-self-center mr-3' )%>
+        <div class="media-body">
+          <h5 class="mt-0"> <%= @product.name %></h5>
+          <ul>
+            <li><b>Description:</b> <%= @product.description %></li>
+            <li><b>Vendor:</b> <%= @product.vendor %></li>
+            <li><b>Style Number:</b> <%= @product.style_number %></li>
+            <li><b>Item Number:</b> <%= @product.item_number %></li>
+            <li><b>Product Page:</b> <%= link_to 'Website Link', @product.product_page_url, target: :_blank %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <%= render partial: 'colors/product_colors', locals: { product: @product} %>
+</div>

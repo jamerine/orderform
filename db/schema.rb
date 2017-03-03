@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303015658) do
+ActiveRecord::Schema.define(version: 20170303164153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,16 +34,36 @@ ActiveRecord::Schema.define(version: 20170303015658) do
     t.index ["subdomain"], name: "index_accounts_on_subdomain", unique: true, using: :btree
   end
 
+  create_table "colors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "hex_color"
+    t.string   "color_sample"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string   "name",                            null: false
     t.string   "description",                     null: false
-    t.string   "product_number",                  null: false
+    t.string   "item_number"
+    t.string   "style_number",                    null: false
+    t.string   "vendor"
     t.boolean  "active",           default: true
     t.string   "product_page_url"
+    t.string   "product_image"
     t.integer  "account_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.index ["account_id"], name: "index_products_on_account_id", using: :btree
+  end
+
+  create_table "products_colors", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "color_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["color_id"], name: "index_products_colors_on_color_id", using: :btree
+    t.index ["product_id"], name: "index_products_colors_on_product_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,4 +84,6 @@ ActiveRecord::Schema.define(version: 20170303015658) do
   end
 
   add_foreign_key "products", "accounts"
+  add_foreign_key "products_colors", "colors"
+  add_foreign_key "products_colors", "products"
 end

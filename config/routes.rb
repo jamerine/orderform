@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   resources :accounts do
-    resources :products
+    resources :products do
+      delete :color
+      post :assign_colors
+    end
   end
+
+  resources :colors
 
 end
