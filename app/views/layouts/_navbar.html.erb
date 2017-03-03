@@ -10,7 +10,7 @@
 
 
   </ul>
-  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger' %>
+  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary' %>
   <% else %>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
@@ -18,7 +18,7 @@
       </li>
 
     </ul>
-      <%= link_to 'Login', new_user_session_path, class: 'btn btn-outline-primary' %>
+      <%= link_to 'Login', new_user_session_path, class: 'btn btn-outline-secondary' %>
   <% end %>
   </div>
 </nav>
