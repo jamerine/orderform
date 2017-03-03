@@ -1,0 +1,25 @@
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% product.sizes.find_each.with_index do |size, index| %>
+      <tr>
+        <td> <%= index + 1 %></td>
+        <td> <%= size.name %></td>
+        <td> <%= number_to_currency(size.price) %></td>
+        <td> <%= link_to 'Remove', account_product_size_path(id: size.id, product_id: product.id, account_id: product.account_id), method: :delete %> </td>
+      </tr>
+      <% end %>
+      <tr>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

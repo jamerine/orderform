@@ -7,10 +7,14 @@ Rails.application.routes.draw do
   resources :accounts do
     resources :products do
       delete :color
+      delete :size
       post :assign_colors
+      post :assign_sizes
     end
   end
 
   resources :colors
+
+  resources :sizes
 
 end

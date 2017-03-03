@@ -4,8 +4,6 @@
   </div>
   <div class="jumbotron jumbotron-white">
     <%= link_to 'Edit', edit_account_product_path(@product) %>
-    <div class="row">
-
       <div class="media">
           <%= image_tag(@product.product_image_url(:thumb), class: 'img-thumbnail d-flex align-self-center mr-3' )%>
         <div class="media-body">
@@ -19,9 +17,34 @@
           </ul>
         </div>
       </div>
-    </div>
   </div>
 </div>
 <div class="container">
-  <%= render partial: 'colors/product_colors', locals: { product: @product} %>
+  <div class="row">
+
+    <div class="col-6">
+
+      <div class="card">
+        <div class="card-header">
+          Colors - <%= link_to 'Add Color', new_color_path(product_id: @product.id)%>
+        </div>
+        <div class="card-block">
+          <%= render partial: 'colors/product_colors', locals: { product: @product} %>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+
+      <div class="card">
+        <div class="card-header">
+          Sizes - <%= link_to 'Add Sizes', new_size_path(product_id: @product.id)%>
+        </div>
+        <div class="card-block">
+          <%= render partial: 'sizes/product_sizes', locals: { product: @product} %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </div>

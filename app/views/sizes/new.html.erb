@@ -1,0 +1,19 @@
+
+
+<div class="container">
+  <div class="row">
+    <%= link_to 'Back', account_product_path(account_id: @product.account_id, id: @product.id), class: 'btn btn-outline-secondary'%>
+  </div>
+  <br>
+  <div class="row">
+    <h3>Current Sizes Available</h3>
+  </div>
+  <%= render partial: 'sizes/all_sizes', locals: { product: @product, sizes: @sizes} %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <h3>Create New size</h3>
+  </div>
+<%= render partial: 'sizes/new', locals: { product_id: @product.id, size: @size} %>
+</div>

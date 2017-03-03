@@ -1,39 +1,27 @@
-<div class="row ">
-    <div class="col-4">
-      <h3>Colors</h3>
-    </div>
-    <div class="col-4">
-      <%= link_to 'Add Color', new_color_path(product_id: product.id), class: 'btn btn-outline-secondary' %>
-    </div>
-</div>
-<div class="row">
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Hex Color</th>
+        <th>Color Sample</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% product.colors.find_each.with_index do |color, index| %>
+      <tr>
+        <td> <%= index + 1 %></td>
+        <td> <%= color.name %></td>
+        <td> <%= color.hex_color %></td>
+        <td> <%= color.color_sample %></td>
+        <td> <%= link_to 'Remove', account_product_color_path(id: color.id, product_id: product.id, account_id: product.account_id), method: :delete %> </td>
+      </tr>
+      <% end %>
+      <tr>
 
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Hex Color</th>
-          <th>Color Sample</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% product.colors.find_each.with_index do |color, index| %>
-        <tr>
-          <td> <%= index + 1 %></td>
-          <td> <%= color.name %></td>
-          <td> <%= color.hex_color %></td>
-          <td> <%= color.color_sample %></td>
-          <td> <%= link_to 'Remove', account_product_color_path(id: color.id, product_id: product.id, account_id: product.account_id), method: :delete %> </td>
-        </tr>
-        <% end %>
-        <tr>
-
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+      </tr>
+    </tbody>
+  </table>
 </div>
