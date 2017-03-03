@@ -38,6 +38,15 @@ gem 'jbuilder', '~> 2.5'
 # Use devise for user authentication
 gem 'devise'
 
+# Use bootstrap for styling
+gem 'bootstrap', '~> 4.0.0.alpha6'
+
+# Use for bootstrap
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+
+gem 'pry'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

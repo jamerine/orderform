@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <br>
+      <%= link_to 'Back', root_path, class: 'btn btn-outline-primary' %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class='col-md-6'>
+      <div class="card">
+        <div class="card-header">
+          Add Account
+        </div>
+        <div class="card-block">
+          <%= form_for @account do |f| %>
+            <div class="form-group">
+              <%= f.label :business_name %><br />
+              <%= f.text_field :business_name, autofocus: true, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :subdomain %><br />
+              <%= f.text_field :subdomain, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :address_line_1 %><br />
+              <%= f.text_field :address_line_1, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :address_line_2 %><br />
+              <%= f.text_field :address_line_2, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :city %><br />
+              <%= f.text_field :city, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :state %><br />
+              <%= f.text_field :state, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :zip_code %><br />
+              <%= f.number_field :zip_code, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :country %><br />
+              <%= f.text_field :country, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :website %><br />
+              <%= f.text_field :website, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :phone_number %><br />
+              <%= f.text_field :phone_number, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :phone_number_extension %><br />
+              <%= f.text_field :phone_number_extension, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :fax_number %><br />
+              <%= f.text_field :fax_number, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :email_address %><br />
+              <%= f.text_field :email_address, class: 'form-control' %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Create", class: 'btn btn-outline-success' %>
+            </div>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

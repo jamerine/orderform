@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303002526) do
+ActiveRecord::Schema.define(version: 20170303003146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
+    t.string   "business_name",          null: false
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip_code"
+    t.string   "country"
+    t.string   "website"
+    t.string   "phone_number"
+    t.string   "phone_number_extension"
+    t.string   "fax_number"
+    t.string   "email_address"
+    t.string   "subdomain",              null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["subdomain"], name: "index_accounts_on_subdomain", unique: true, using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

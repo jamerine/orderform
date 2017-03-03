@@ -1,12 +1,25 @@
-<h2>Welcome to Order Form</h2>
+<div class="container">
+  <div class="jumbotron jumbotron-white jumbotron-fluid justify-content-center">
+    <div class="row justify-content-md-center">
+      <div class="col col-md-auto">
+        <h1 class="display-3">Welcome to Order Form!</h1>
+        <hr class="my-4">
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col col-md-auto">
+        <% if current_user %>
+          <div class="row">
+            <%= link_to 'Views Accounts', accounts_path, class: 'btn btn-outline-primary' %>
+            <%= link_to 'Create Account', new_account_path, class: 'btn btn-outline-success' %>
+          </div>
+        <% else %>
+          <div class="row">
+            <%= link_to 'Login', new_user_session_path, class: 'btn btn-outline-primary'  %>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
-<p>The Greatest App</p>
-
-
-
-
-<% if current_user %>
-  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to 'Login', new_user_session_path %>
-<% end %>
+  </div>
+</div>

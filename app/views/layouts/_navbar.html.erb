@@ -1,0 +1,24 @@
+<nav class="navbar fixed-top navbar-toggleable-md navbar-white">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- <%= link_to 'Order Form', root_path, class: 'navbar-brand' %> -->
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+  <% if current_user %>
+  <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+
+
+  </ul>
+  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger' %>
+  <% else %>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+
+      </li>
+
+    </ul>
+      <%= link_to 'Login', new_user_session_path, class: 'btn btn-outline-primary' %>
+  <% end %>
+  </div>
+</nav>
