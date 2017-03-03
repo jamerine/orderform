@@ -19,6 +19,7 @@ class AccountsController < ApplicationController
   end
 
   def show
+    @products = @account.products
   end
 
   private

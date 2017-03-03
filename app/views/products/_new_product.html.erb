@@ -1,0 +1,23 @@
+<%= form_for [account, product], {multipart: true} do |f| %>
+  <div class="form-group">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :product_number %><br />
+    <%= f.text_field :product_number, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :product_page_url %><br />
+    <%= f.text_field :product_page_url, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create", class: 'btn btn-outline-secondary' %>
+  </div>
+
+<% end %>

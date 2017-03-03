@@ -41,6 +41,7 @@ gem 'devise'
 # Use bootstrap for styling
 gem 'bootstrap', '~> 4.0.0.alpha6'
 
+gem 'font-awesome-rails'
 # Use for bootstrap
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 

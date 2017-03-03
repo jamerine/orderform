@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
-  resources :accounts
+  resources :accounts do
+    resources :products
+  end
 
-  
 end
