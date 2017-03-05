@@ -14,11 +14,12 @@ class ColorsController < ApplicationController
 
 
 
+
+
   private
 
 
   def color_params
     params.require(:color).permit(:name, :hex_color, :color_sample)
   end
-
 end

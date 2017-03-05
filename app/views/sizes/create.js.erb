@@ -1,0 +1,6 @@
+
+ $(".size_table").html("<%= escape_javascript(render partial: 'sizes/product_sizes', locals: { product: @product}) %>");
+ $(".size_table").html("<%= escape_javascript(render partial: 'sizes/new', locals: { product_id: @product.id, size: @new_size}) %>");
+ $('.flash').prepend("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= @message %></div>");
+
+ // $('.flash').prepend("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= @message %></div>");

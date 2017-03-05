@@ -1,0 +1,6 @@
+<% if @size.destroyed? %>
+ $(".size-table").html("<%= escape_javascript(render partial: 'sizes/product_sizes', locals: { product: @product}) %>");
+
+<% else %>
+ // $('.flash').prepend("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= @message %></div>");
+<% end %>

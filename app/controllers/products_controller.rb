@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @new_color = Color.new
+    @new_size = Size.new
   end
 
   def edit
@@ -56,6 +57,29 @@ class ProductsController < ApplicationController
       redirect_to account_product_path(account_id: @product.account_id, id: @product.id), notice: "Color has been added"
     else
       redirect_to account_product_path(account_id: @product.account_id, id: @product.id), alert: "There was an error adding the color"
+    end
+  end
+
+  def size
+    @product = Product.find(params[:product_id])
+    @size = Size.find(params[:id])
+    @message = "Payroll was deleted."
+    @products_size = ProductsSize.find_by(product_id: @product.id, size_id: @size.id)
+    if @products_size.destroy
+      redirect_to account_product_path(account_id: @product.account_id, id: @product.id), notice: "Size has been removed"
+    else
+      redirect_to account_product_path(account_id: @product.account_id, id: @product.id), alert: "There was an error removing the size."
+    end
+  end
+
+  def assign_sizes
+    @product = Product.find(params[:product_id])
+    @size = Size.find(params[:id])
+    @products_size = ProductsSize.new(product_id: @product.id, color_id: @color.id)
+    if @products_size.save
+      redirect_to account_product_path(account_id: @product.account_id, id: @product.id), notice: "Size has been added"
+    else
+      redirect_to account_product_path(account_id: @product.account_id, id: @product.id), alert: "There was an error adding the size"
     end
   end
 

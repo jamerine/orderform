@@ -26,25 +26,31 @@
 
       <div class="card">
         <div class="card-header">
-          Colors - <%= link_to 'Add Color', new_color_path(product_id: @product.id)%>
+          Colors - <%= link_to 'Assign Color', new_color_path(product_id: @product.id)%>
         </div>
         <div class="card-block">
           <%= render partial: 'colors/product_colors', locals: { product: @product} %>
+          <%= render partial: 'colors/new', locals: { product_id: @product.id, color: @new_color} %>
         </div>
       </div>
     </div>
     <div class="col-6">
-
       <div class="card">
         <div class="card-header">
-          Sizes - <%= link_to 'Add Sizes', new_size_path(product_id: @product.id)%>
+          Sizes - <%= link_to 'Assign Sizes', new_size_path(product_id: @product.id)%>
         </div>
         <div class="card-block">
           <%= render partial: 'sizes/product_sizes', locals: { product: @product} %>
+          <%= render partial: 'sizes/new', locals: { product_id: @product.id, size: @new_size} %>
         </div>
       </div>
     </div>
 
   </div>
 
+</div>
+<div class="container">
+  <div class="jumbotron jumbotron-white">
+
+  </div>
 </div>
