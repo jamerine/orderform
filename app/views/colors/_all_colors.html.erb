@@ -16,7 +16,8 @@
         <td> <%= color.hex_color %></td>
         <td> <%= color.color_sample %></td>
         <td> <%= link_to 'Assign', account_product_assign_colors_path(account_id: product.account_id, product_id: product.id, id: color.id), method: :post %> </td>
-      
+        <td> <%= link_to 'Delete', color_path(account_id: product.account_id, product_id: product.id, id: color.id), method: :delete, data: {:confirm => "This will delete the color from all products. Are you sure?"}  %> </td>
+
       </tr>
       <% end %>
     </tbody>

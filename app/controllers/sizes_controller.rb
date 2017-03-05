@@ -21,7 +21,7 @@ class SizesController < ApplicationController
       @size = @product.sizes.create(size_params)
       @message = "Size Created and Assigned."
     end
-     redirect_to account_product_path(account_id: @product.account_id, id: @product), notice: "Size has been created"
+     redirect_to account_product_path(account_id: @product.account_id, id: @product), notice: @message
   end
 
   def destroy
