@@ -10,6 +10,5 @@ class Product < ApplicationRecord
   validates :name, :presence => true
   validates :description, :presence => true
   validates :style_number, :presence => true
-  validates :vendor, :presence => true
 
 end

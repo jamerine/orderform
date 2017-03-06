@@ -8,7 +8,7 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     if @account.save
-      redirect_to company_path(@account), notice: 'Account has been created successfully!'
+      redirect_to account_path(@account), notice: 'Account has been created successfully!'
     else
       redirect_to new_account_path, alert: 'There was an error creating the account'
     end
@@ -22,6 +22,20 @@ class AccountsController < ApplicationController
     @products = @account.products
   end
 
+  def edit
+    @account = Account.find(params[:id])
+  end
+
+
+  def update
+    @account = Account.find(params[:id])
+    @account.assign_attributes(account_params)
+    if @account.save
+      redirect_to account_path(@account), notice: 'Account has been updated successfully!'
+    else
+      redirect_to edit_account_path(@account), notice: 'Account has been created successfully!'
+    end
+  end
   private
 
   def set_account
@@ -30,7 +44,7 @@ class AccountsController < ApplicationController
 
   def account_params
     params.require(:account).permit(:business_name, :address_line_1, :address_line_2, :address_line_2, :city,
-        :state, :zip_code, :country, :website, :phone_number, :phone_number_extension, :fax_number, :email_address, :subdomain
+        :state, :zip_code, :country, :website, :phone_number, :phone_number_extension, :fax_number, :email_address, :subdomain, :logo
     )
   end
 

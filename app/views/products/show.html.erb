@@ -3,10 +3,11 @@
     <%= link_to 'Back', account_path(@product.account_id), class: 'btn btn-outline-secondary' %>
   </div>
   <div class="jumbotron jumbotron-white">
-    <%= link_to 'Edit', edit_account_product_path(@product) %>
+    <%= link_to 'Edit', edit_account_product_path(@account, @product) %>
       <div class="media">
           <%= image_tag(@product.product_image_url(:thumb), class: 'img-thumbnail d-flex align-self-center mr-3' )%>
-        <div class="media-body">
+          <div class="media-body">
+
           <h5 class="mt-0"> <%= @product.name %></h5>
           <ul>
             <li><b>Description:</b> <%= @product.description %></li>

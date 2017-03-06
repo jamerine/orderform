@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20170303220915) do
     t.string   "fax_number"
     t.string   "email_address"
     t.string   "subdomain",              null: false
+    t.string   "logo"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["subdomain"], name: "index_accounts_on_subdomain", unique: true, using: :btree

@@ -14,6 +14,7 @@ class CreateAccounts < ActiveRecord::Migration[5.0]
       t.string :fax_number
       t.string :email_address
       t.string :subdomain, null: false
+      t.string :logo
 
       t.timestamps
     end

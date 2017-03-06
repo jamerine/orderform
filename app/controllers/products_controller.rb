@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @account = @product.account
     @new_color = Color.new
     @new_size = Size.new
   end
