@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>New Order</h1>
+  <div class="row">
+    <%= form_for [@account, @order] do |f| %>
+      <%= f.hidden_field :account_id, value: "#{@account.id}" %>
+
+      <div class="form-group">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :phone_number %>
+        <%= f.text_field :phone_number, class: 'form-control' %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Start Order", class: 'btn btn-success' %>
+      </div>
+
+    <% end%>
+  </div>
+</div>

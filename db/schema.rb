@@ -61,12 +61,18 @@ ActiveRecord::Schema.define(version: 20170307053259) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "status"
-    t.float    "subtotal"
-    t.float    "tax"
-    t.float    "shipping"
-    t.float    "total"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.decimal  "subtotal",     precision: 12, scale: 3
+    t.decimal  "tax",          precision: 12, scale: 3
+    t.decimal  "shipping",     precision: 12, scale: 3
+    t.decimal  "total",        precision: 12, scale: 3
+    t.integer  "account_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone_number"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.index ["account_id"], name: "index_orders_on_account_id", using: :btree
   end
 
   create_table "products", force: :cascade do |t|
@@ -104,9 +110,9 @@ ActiveRecord::Schema.define(version: 20170307053259) do
 
   create_table "sizes", force: :cascade do |t|
     t.string   "name"
-    t.float    "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.decimal  "price",      precision: 12, scale: 3
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "users", force: :cascade do |t|

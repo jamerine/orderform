@@ -11,8 +11,17 @@ Rails.application.routes.draw do
       post :assign_colors
       post :assign_sizes
     end
+    get :order_form
+    resources :orders do
+      resources :order_items
+    end
 
   end
+
+  resources :orders
+
+  resources :cart
+
 
   resources :colors
 

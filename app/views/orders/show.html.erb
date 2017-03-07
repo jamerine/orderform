@@ -1,0 +1,38 @@
+<div class="container">
+  <h1>  <%= @account.business_name %> Order</h1>
+  <div class="row">
+    <div class="col">
+      <h4>Current Order Items</h4>
+      <% if @order_items.empty? %>
+        <p>Currently you do not have any items on order.</p>
+      <% else %>
+        <ol>
+          <% @order_items.each do |item| %>
+            <li><%= item.product_id %> - <%= link_to 'delete', account_order_order_item %></li>
+          <% end %>
+        </ol>
+      <% end %>
+    </div>
+  </div>
+
+  <br>
+  <h3>Items to add</h3>
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <h3><%= product.name %></h3>
+          </div>
+          <div class="card-block">
+            <p>Item Number: <%= product.item_number %></p>
+            <p>Style Number: <%= product.style_number %></p>
+            <p>Details: <%= product.description %></p>
+            <%= link_to 'Choose Product', new_account_order_order_item_path(order_id: @order.id, product_id: product.id, account_id: @account.id), class: 'btn btn-primary' %>
+
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -36,6 +36,14 @@ class AccountsController < ApplicationController
       redirect_to edit_account_path(@account), notice: 'Account has been created successfully!'
     end
   end
+
+
+  def order_form
+    @account = Account.find(params[:account_id])
+    @products = @account.products
+    @order_items = current_order.order_items
+  end
+
   private
 
   def set_account
