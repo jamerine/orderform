@@ -4,6 +4,8 @@ class Product < ApplicationRecord
   has_many :colors, through: :products_colors
   has_many :products_sizes
   has_many :sizes, through: :products_sizes
+  has_many :order_items
+  
 
   mount_uploader :product_image, ProductImageUploader
 

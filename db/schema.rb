@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303220915) do
+ActiveRecord::Schema.define(version: 20170307053259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,32 @@ ActiveRecord::Schema.define(version: 20170303220915) do
     t.string   "color_sample"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "size_id"
+    t.integer  "color_id"
+    t.integer  "order_id"
+    t.decimal  "unit_price",  precision: 12, scale: 3
+    t.integer  "quantity"
+    t.decimal  "total_price", precision: 12, scale: 3
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["color_id"], name: "index_order_items_on_color_id", using: :btree
+    t.index ["order_id"], name: "index_order_items_on_order_id", using: :btree
+    t.index ["product_id"], name: "index_order_items_on_product_id", using: :btree
+    t.index ["size_id"], name: "index_order_items_on_size_id", using: :btree
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "status"
+    t.float    "subtotal"
+    t.float    "tax"
+    t.float    "shipping"
+    t.float    "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -100,6 +126,10 @@ ActiveRecord::Schema.define(version: 20170303220915) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "order_items", "colors"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
+  add_foreign_key "order_items", "sizes"
   add_foreign_key "products", "accounts"
   add_foreign_key "products_colors", "colors"
   add_foreign_key "products_colors", "products"

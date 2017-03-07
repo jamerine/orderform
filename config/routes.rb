@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       post :assign_colors
       post :assign_sizes
     end
+
   end
 
   resources :colors
