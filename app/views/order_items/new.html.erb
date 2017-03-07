@@ -1,12 +1,9 @@
+
 <div class="container">
   <%= link_to 'Return to Order', account_order_path(@account, @order), class: 'btn btn-outline-secondary' %>
-  <div class="row">
+  </div>
+  <div class="row justify-content-md-center">
       <div class="col col-6">
-        <div class="card">
-          <div class="card-header">
-            <h3><%= @product.name %></h3>
-          </div>
-          <div class="card-block">
             <div class="media">
               <% if @product.colors.empty? %>
                 <p>No Image Available</p>
@@ -28,7 +25,7 @@
           <%= form_for [@account, @order, @order_item] do |f| %>
             <%= f.hidden_field :product_id, value: "#{@product.id}" %>
             <%= f.hidden_field :order_id, value: "#{@account.id}" %>
-            <div class="card-footer">
+
 
               <div class="form-group">
                 <%= f.label 'Color' %>
@@ -45,9 +42,6 @@
               <div class="actions">
                 <%= f.submit "Order", class: 'btn btn-success' %>
               </div>
-
-            </div>
-
           <% end %>
         </div>
       </div>

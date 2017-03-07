@@ -1,0 +1,29 @@
+<div class="container">
+  <hr>
+  <div class="row ">
+    <div class="col-2 offset-md-1">
+      <%= image_tag(order_item.color.color_sample_url(:thumb), class: 'd-flex align-self-center' )%>
+    </div>
+    <div class="col-3 text-left">
+      <h6><%= product.name %></h6>
+      <p>Item Number: <%= order_item.product.item_number %></p>
+      <p>Style Number: <%= order_item.product.style_number %></p>
+    </div>
+      <div class="col-2">
+        <p>Size: <%= order_item.size.name %></p>
+        <p>Color: <p class="color-circle" style="background: <%= order_item.color.hex_color %>"></p></p>
+      </div>
+    <div class="col-1">
+      <p>Quantity:</p>
+      <h4><%= order_item.quantity %></h4>
+    </div>
+    <div class="col-2">
+      <p>Total Price:</p>
+      <h4><%= number_to_currency order_item.total_price %></h4>
+    </div>
+    <div class="col-1">
+      <%= link_to 'delete', account_order_order_item_path(@account, @order, order_item), method: :delete %>
+    </div>
+  </div>
+  <hr>
+</div>

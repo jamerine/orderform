@@ -8,16 +8,10 @@
     </div>
     <div class="row justify-content-md-center">
       <div class="col col-md-auto">
-        <% if current_user %>
           <div class="row">
             <%= link_to 'Views Accounts', accounts_path, class: 'btn btn-outline-secondary' %>
             <!-- <%= link_to 'Create Account', new_account_path, class: 'btn btn-outline-success' %> -->
           </div>
-        <% else %>
-          <div class="row">
-            <%= link_to 'Login', new_user_session_path, class: 'btn btn-outline-secondary'  %>
-          </div>
-        <% end %>
       </div>
     </div>
 

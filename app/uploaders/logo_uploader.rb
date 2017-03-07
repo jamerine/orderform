@@ -30,7 +30,7 @@ class LogoUploader < CarrierWave::Uploader::Base
   # end
 
   version :thumb do
-    process :resize_to_limit => [200, nil]
+    process :resize_to_limit => [125, 125]
   end
 
   # Create different versions of your uploaded files:

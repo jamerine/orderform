@@ -5,6 +5,6 @@ class Size < ApplicationRecord
 
 
   def name_with_price
-    "#{name} - $#{ price }0"
+    "#{name} - #{ price }"
   end
 end

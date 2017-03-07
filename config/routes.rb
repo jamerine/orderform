@@ -18,9 +18,7 @@ Rails.application.routes.draw do
 
   end
 
-  resources :orders
-
-  resources :cart
+  resources :carts
 
 
   resources :colors

@@ -1,0 +1,26 @@
+<% if !@order_item.nil? && @order_item.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @order_item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="container text-center">
+  <br>
+  <h5>Order Status: <%= @order.status.titleize %> </h5>
+  <br>
+</div>
+<% if @order_items.size == 0 %>
+  <p class="text-center">
+    There are no items in your shopping cart. <%= link_to "Shop Now", account_order_path(@account, @order) %>
+  </p>
+<% else %>
+  <% @order_items.each do |order_item| %>
+    <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, order: @order %>
+  <% end %>
+<% end %>
+<div class="container">
+<%= link_to 'Add New Product', account_order_path(@account, @order) %>
+</div>

@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(version: 20170307053259) do
     t.integer  "size_id"
     t.integer  "color_id"
     t.integer  "order_id"
-    t.decimal  "unit_price",  precision: 12, scale: 3
+    t.decimal  "unit_price",  precision: 12, scale: 2
     t.integer  "quantity"
-    t.decimal  "total_price", precision: 12, scale: 3
+    t.decimal  "total_price", precision: 12, scale: 2
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.index ["color_id"], name: "index_order_items_on_color_id", using: :btree
@@ -61,10 +61,10 @@ ActiveRecord::Schema.define(version: 20170307053259) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "status"
-    t.decimal  "subtotal",     precision: 12, scale: 3
-    t.decimal  "tax",          precision: 12, scale: 3
-    t.decimal  "shipping",     precision: 12, scale: 3
-    t.decimal  "total",        precision: 12, scale: 3
+    t.decimal  "subtotal",     precision: 12, scale: 2
+    t.decimal  "tax",          precision: 12, scale: 2
+    t.decimal  "shipping",     precision: 12, scale: 2
+    t.decimal  "total",        precision: 12, scale: 2
     t.integer  "account_id"
     t.string   "first_name"
     t.string   "last_name"

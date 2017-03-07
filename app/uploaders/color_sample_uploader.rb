@@ -24,7 +24,7 @@ class ColorSampleUploader < CarrierWave::Uploader::Base
 
 
   version :thumb do
-    process :resize_to_limit => [200, nil]
+    process :resize_to_limit => [125, 125]
   end
 
   # Process files as they are uploaded:

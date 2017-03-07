@@ -16,7 +16,7 @@
  @import "normalize";
  @import "bootstrap";
  @import "font-awesome";
- 
+
  body {
    margin-top: 60px;
  }
@@ -27,4 +27,12 @@
 
  .navbar-white {
    background-color: transparent;
+ }
+
+.color-circle {
+	width: 25px;
+	height: 25px;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
  }

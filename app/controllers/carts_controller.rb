@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
   def show
-    @order_items = current_order.order_items
+    @order = Order.find(params[:order_id])
+    @order_items = @order.order_items
+    @account = @order.account
   end
 end

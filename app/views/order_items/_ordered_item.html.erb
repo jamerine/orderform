@@ -1,3 +1,22 @@
-<div class="col col-3">
-
+<div class="row">
+  <div class="col col-3">
+    <%= image_tag(product.colors.first.color_sample_url(:thumb), class: 'd-flex align-self-center' )%>
+  </div>
+  <div class="col col-3">
+    <h5><%= product.name %></h5>
+    <p>Item number: <%= product.item_number %></p>
+    <p>Style number: <%= product.style_number %></p>
+    <p>Details: <%= product.description %></p>
+  </div>
+  <div class="col col-3">
+    <h6>Total Quantity</h6>
+    <p> <%= order_item.quantity %> </p>
+    <h6>Unit Price</h6>
+    <p> <%= number_to_currency(order_item.unit_price) %> </p>
+  </div>
+  <div class="col col-3">
+    <h5>Total Price</h5>
+    <p> <%= number_to_currency(order_item.total_price) %> </p>
+    <%= link_to 'Delete', account_order_order_item_path(account, order, order_item), method: :delete %>
+  </div>
 </div>

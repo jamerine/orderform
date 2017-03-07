@@ -2,8 +2,10 @@
   <div class="row">
     <div class="col-md-4">
       <br>
-      <%= link_to 'Back', accounts_path, class: 'btn btn-outline-secondary' %>
-      <%= link_to 'Edit', edit_account_path(@account), class: 'btn btn-outline-secondary'   %>
+      <% if current_user %>
+        <%= link_to 'Back', accounts_path, class: 'btn btn-outline-secondary' %>
+        <%= link_to 'Edit', edit_account_path(@account), class: 'btn btn-outline-secondary'   %>
+      <% end %>
     </div>
   </div>
   <br>
@@ -23,49 +25,50 @@
     </div>
     <div class="row justify-content-md-center">
       <div class="col col-md-auto">
-        <%= link_to 'Create Order', new_account_order_path(@account), class: 'btn btn-primary' %>
+        <%= link_to 'Create Bulk Order', account_orders_path(@account), method: :create, class: 'btn btn-primary' %>
       </div>
     </div>
-    <div class="row justify-content-md-center">
-      <h2>Products</h2>
-    </div>
-    <div class="row justify-content-md-center">
-      <div class="col col-md-auto">
-        <%= link_to 'Add Product', new_account_product_path(@account), class: 'btn btn-outline-secondary' %>
+    <% if current_user %>
+      <div class="row justify-content-md-center">
+        <h2>Products</h2>
       </div>
-    </div>
-    <br>
-
-        <div class="row justify-content-md-center">
-          <table class="table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Product Number</th>
-                <th>Active</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @products.each do |prod| %>
-              <tr>
-                <td scope="row"> <%= link_to 'view', account_product_path(account_id: @account.id, id: prod.id),  class: 'btn btn-outline-secondary btn-sm' %> </td>
-                <td><%= prod.name %></td>
-                <td><%= prod.style_number %></td>
-                <td>
-                  <% if prod.active? %>
-                    <%= fa_icon "check" %>
-                  <% else %>
-                    <%= fa_icon "close" %>
-                  <% end %>
-                </td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-
+      <div class="row justify-content-md-center">
+        <div class="col col-md-auto">
+          <%= link_to 'Add Product', new_account_product_path(@account), class: 'btn btn-outline-secondary' %>
         </div>
+      </div>
+      <br>
 
+          <div class="row justify-content-md-center">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Name</th>
+                  <th>Product Number</th>
+                  <th>Active</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @products.each do |prod| %>
+                <tr>
+                  <td scope="row"> <%= link_to 'view', account_product_path(account_id: @account.id, id: prod.id),  class: 'btn btn-outline-secondary btn-sm' %> </td>
+                  <td><%= prod.name %></td>
+                  <td><%= prod.style_number %></td>
+                  <td>
+                    <% if prod.active? %>
+                      <%= fa_icon "check" %>
+                    <% else %>
+                      <%= fa_icon "close" %>
+                    <% end %>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+
+          </div>
+    <% end %>
 
 
 </div>
