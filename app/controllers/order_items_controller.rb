@@ -31,7 +31,15 @@ class OrderItemsController < ApplicationController
     else
       redirect_to cart_path(order_id: @order_item.order.id), alert: 'Unable to delete.'
     end
+  end
 
+  def delete_item
+    @order_item = OrderItem.find(params[:id])
+    if @order_item.destroy
+      redirect_to cart_path(order_id: @order_item.order.id), notice: 'Order Item deleted.'
+    else
+      redirect_to cart_path(order_id: @order_item.order.id), alert: 'Unable to delete.'
+    end
   end
 
   def order_item_params

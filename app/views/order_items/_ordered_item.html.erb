@@ -17,6 +17,6 @@
   <div class="col col-3">
     <h5>Total Price</h5>
     <p> <%= number_to_currency(order_item.total_price) %> </p>
-    <%= link_to 'Delete', account_order_order_item_path(account, order, order_item), method: :delete %>
+    <%= link_to 'Delete', account_order_order_item_delete_item_path(account, order, order_item), method: :delete %>
   </div>
 </div>

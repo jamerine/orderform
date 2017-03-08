@@ -18,7 +18,9 @@ Rails.application.routes.draw do
     resources :orders do
       get :shipping_details
       post :shipping_details_save
-      resources :order_items
+      resources :order_items do
+        delete :delete_item
+      end
     end
 
   end
