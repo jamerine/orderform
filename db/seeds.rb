@@ -227,7 +227,7 @@
 
   @product_10 = @account_1.products.create(name: "Mini Sharpie", item_number: 'LWSP17-109', style_number: 'N/A', description: 'Red cap with full color logo')
 
-    @color_1 = @product_10.colors.create(name: 'Red', hex_color: '#333333'  )
+    @color_1 = @product_10.colors.create(name: 'Red', hex_color: '#D21444'  )
       File.open('/Users/jasonamerine/Dittoh/LW Supply Images/sharpie.jpg') do |f|
         @color_1.color_sample = f
       end

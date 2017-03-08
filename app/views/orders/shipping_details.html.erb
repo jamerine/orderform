@@ -1,0 +1,99 @@
+<div class="account-header">
+  <div class="d-flex justify-content-start">
+      <div class="col-1 p-2 offset-1">
+        <%= image_tag(@account.logo_url(:thumb), class: 'd-flex align-self-center header-logo-image' )%>
+      </div>
+      <div class="col-3 p-3">
+        <h1><%= @account.business_name %></h1>
+        <h3 class="text-muted">Spring Promo 2017</h3>
+      </div>
+
+  </div>
+
+</div>
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="col-4 offset-1">
+      <h6>Shipping Details: </h6>
+      <br>
+      <%= form_for :order , :url => account_order_shipping_details_save_path(@account, @order) do |f| %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-6">
+              <%= f.text_field :first_name, class: 'form-control', :placeholder => :first_name, required: true %>
+            </div>
+            <div class="col-6">
+              <%= f.text_field :last_name, class: 'form-control', :placeholder => :last_name, required: true %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-8">
+              <%= f.text_field :address_line_1, class: 'form-control', :placeholder => "Address", required: true %>
+            </div>
+            <div class="col-4">
+              <%= f.text_field :address_line_2, class: 'form-control', :placeholder => "Apt/Bld #"%>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-6">
+              <%= f.text_field :city, class: 'form-control', :placeholder => :city, required: true %>
+            </div>
+            <div class="col-6">
+              <%= f.text_field :state, class: 'form-control', :placeholder => :state, required: true %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-4">
+              <%= f.text_field :zip_code, class: 'form-control', :placeholder => :zip_code, required: true %>
+            </div>
+            <div class="col-8">
+              <%= f.text_field :phone_number, class: 'form-control', :placeholder => :phone_number, required: true %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :email, class: 'form-control', :placeholder => "Email address", required: true %>
+        </div>
+        <br>
+        <div class="row justify-content-md-center">
+          <div class="actions">
+            <%= f.submit "Send Order", class: 'btn add-to-cart-button'%>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-5 offset-2">
+      <h6>Order Details:</h6>
+      <br>
+      <% @order_items.each do |item| %>
+        <div class="row shipping_order_detail">
+            <div class="col-4">
+                <%= image_tag(item.product.colors.first.color_sample_url(:thumb), class: 'd-flex align-self-center img-thumbnail' )%>
+            </div>
+            <div class="col-6 offset-1">
+                <p><%= item.product.name %></p>
+                <p><p class="color-circle" style="background: <%= item.color.hex_color %>"></p></p>
+                <p>Price: <%= number_to_currency(item.total_price) %></p>
+            </div>
+        </div>
+      <% end %>
+      <hr>
+      <div class="row">
+          <%= link_to 'Continue Shopping', account_order_path(@account, @order) %>
+      </div>
+      <div class="row justify-content-end">
+        <h5>TOTAL: <%= number_to_currency(@order.subtotal) %></h5>
+      </div>
+      <div class="row justify-content-end">
+        <p>shipping not included</p>
+      </div>
+    </div>
+  </div>
+</div>

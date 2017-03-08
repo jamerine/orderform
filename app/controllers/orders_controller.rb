@@ -23,6 +23,24 @@ class OrdersController < ApplicationController
     end
   end
 
+  def shipping_details
+    @order = Order.find(params[:order_id])
+    @order_items = @order.order_items
+    @account = @order.account
+  end
+
+  def shipping_details_save
+    @order = Order.find(params[:order_id])
+    @account = @order.account
+    @order.assign_attributes(status: 2)
+    if @order.save
+      redirect_to @account, notice: 'Order has been placed. Please check your email for an receipt of your order.'
+    else
+      redirect_to @order, notice: 'There was an error with placing the order.  Please try again.'
+    end
+  end
+
+  private
 
   def order_params
     params.require(:order).permit(:first_name, :last_name, :color_id, :order_id, :unit_price, :quantity, :total_price, :account_id)

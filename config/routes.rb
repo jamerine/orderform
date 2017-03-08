@@ -13,12 +13,15 @@ Rails.application.routes.draw do
     end
     get :order_form
     resources :orders do
+      get :shipping_details
+      post :shipping_details_save
       resources :order_items
     end
 
   end
 
-  resources :carts
+  resources :carts do
+  end
 
 
   resources :colors

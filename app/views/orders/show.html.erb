@@ -1,22 +1,25 @@
 <%= render partial: 'layouts/header', locals: { account: @account, order: @order } %>
+
 <br>
 <div class="container">
   <p class="text-center">Select a product!</p>
   <div class="row">
     <% @products.each do |product| %>
       <div class="col col-4">
-        <div class="card">
+        <div class="card product-box">
             <div class="row">
-              <div class="col col-9">
+              <div class="col col-6 offset-1">
                 <p><%= product.name %></p>
               </div>
-              <div class="col col-3">
+              <div class="col col-2 offset-1">
                 <p><%= number_to_currency(product.sizes.first.price) %></p>
               </div>
           </div>
           <div class="card-block">
-              <%= image_tag(product.colors.first.color_sample_url(:thumb), class: 'mx-auto d-block' )%>
-              <%= link_to 'Add To Cart', new_account_order_order_item_path(account_id: @account.id, order_id: @order.id, id: product.id), class: 'btn btn-primary float-right' %>
+              <%= image_tag(product.colors.first.color_sample_url(:thumb), class: 'mx-auto d-block product-block-image' )%>
+          </div>
+          <div class="product-box-button">
+            <%= link_to 'Add To Cart', new_account_order_order_item_path(account_id: @account.id, order_id: @order.id, id: product.id), class: 'btn add-to-cart-button float-right' %>
           </div>
         </div>
       </div>
