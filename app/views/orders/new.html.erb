@@ -1,33 +1,60 @@
 <div class="container">
-  <h1>New Order</h1>
+  <br>
   <div class="row">
-    <%= form_for [@account, @order] do |f| %>
-      <%= f.hidden_field :account_id, value: "#{@account.id}" %>
-
-      <div class="form-group">
-        <%= f.label :first_name %>
-        <%= f.text_field :first_name, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :phone_number %>
-        <%= f.text_field :phone_number, class: 'form-control' %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Start Order", class: 'btn btn-success' %>
-      </div>
-
-    <% end%>
+    <div class="col-4 offset-1">
+      <h6>Shipping Details: </h6>
+      <br>
+      <%= form_for [@account, @order] do |f| %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-6">
+              <%= f.text_field :first_name, class: 'form-control', :placeholder => :first_name, required: true %>
+            </div>
+            <div class="col-6">
+              <%= f.text_field :last_name, class: 'form-control', :placeholder => :last_name, required: true %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-8">
+              <%= f.text_field :address_line_1, class: 'form-control', :placeholder => "Address", required: true %>
+            </div>
+            <div class="col-4">
+              <%= f.text_field :address_line_2, class: 'form-control', :placeholder => "Apt/Bld #"%>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-6">
+              <%= f.text_field :city, class: 'form-control', :placeholder => :city, required: true %>
+            </div>
+            <div class="col-6">
+              <%= f.text_field :state, class: 'form-control', :placeholder => :state, required: true %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-4">
+              <%= f.text_field :zip_code, class: 'form-control', :placeholder => :zip_code, required: true %>
+            </div>
+            <div class="col-8">
+              <%= f.text_field :phone_number, class: 'form-control', :placeholder => :phone_number, required: true %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :email, class: 'form-control', :placeholder => "Email address", required: true %>
+        </div>
+        <br>
+        <div class="row justify-content-md-center">
+          <div class="actions">
+            <%= f.submit "Start Bulk Order", class: 'btn add-to-cart-button'%>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

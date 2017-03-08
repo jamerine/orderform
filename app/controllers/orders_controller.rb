@@ -10,12 +10,12 @@ class OrdersController < ApplicationController
   def new
     @account = Account.find(params[:account_id])
     @products = @account.products
-    @order = Order.new
+    @order = @account.orders.new(account_id: @account)
   end
 
   def create
     @account = Account.find(params[:account_id])
-    @order = @account.orders.new(account_id: @account)
+    @order = @account.orders.new(order_params)
     if @order.save
       redirect_to account_order_path(@account, @order.id), notice: "Order Process has begun successfully."
     else
