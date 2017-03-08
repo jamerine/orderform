@@ -10,30 +10,27 @@
     </p>
     <br>
     <table >
-  <tr>
-    <th>Product</th>
-    <th>Item Number</th>
-    <th>style_number</th>
-    <th>Quantity</th>
-    <th>Total Price</th>
-  </tr>
-    <% @order.order_items.find_each do |item| %>
-  <tr>
-    <td><%= item.product.name %></td>
-    <td><%= item.product.item_number %></td>
-    <td><%= item.product.style_number %></td>
-    <td><%= item.quantity %></td>
-    <td><%= number_to_currency(item.total_price) %></td>
-  </tr>
-</table>
+      <tr>
+        <th>Product</th>
+        <th>Item Number</th>
+        <th>style_number</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+      </tr>
+        <% @order.order_items.find_each do |item| %>
+      <tr>
+        <td><%= item.product.name %></td>
+        <td><%= item.product.item_number %></td>
+        <td><%= item.product.style_number %></td>
+        <td><%= item.quantity %></td>
+        <td><%= number_to_currency(item.total_price) %></td>
+      </tr>
+        <% end %>
+    </table>
   <br>
-    <ul>
-      <% @order.order_items.find_each do |item| %>
-        <li><%= item.product.name %> - <%= item.product.item_number %> - <%= item.product.style_number %> - <%= item.quantity %> @ <%= number_to_currency(item.total_price) %></li>
-      <% end %>
-    </ul>
 
 
-    <h5>Have a great day!</h5>
+
+  <h5>Have a great day!</h5>
   </body>
 </html>
