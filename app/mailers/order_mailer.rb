@@ -4,7 +4,7 @@ class OrderMailer < ApplicationMailer
   def order_email(account_id, order_id)
     @account = Account.find(account_id)
     @order = Order.find(order_id)
-    mail(:to => "#{@order.email}", :subject => "#{ @account.business_name } Bulk Order")
+    mail(:to => @order.email, :subject => "#{ @account.business_name } Bulk Order")
   end
 
 end
