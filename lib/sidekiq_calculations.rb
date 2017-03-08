@@ -8,14 +8,7 @@ class SidekiqCalculations
     web_dynos
     worker_dynos
     max_redis_connection
-  rescue KeyError, TypeError # Integer(nil) raises TypeError
-    raise <<-ERROR
-Sidekiq Server Configuration failed.
-!!!======> Please add ENV:
-  - NUMBER_OF_WEB_DYNOS
-  - NUMBER_OF_WORKER_DYNOS
-  - MAX_REDIS_CONNECTION
-    ERROR
+
   end
 
   def client_redis_size
