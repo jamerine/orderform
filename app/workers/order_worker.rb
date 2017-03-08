@@ -7,7 +7,7 @@ class OrderWorker
     @account = Account.find(account_id)
     @order = Order.find(order_id)
     OrderMailer.order_email(@account.id, @order.id).deliver
-    InvoiceMailer.order_email(@account.id, @order.id).deliver
-    
+    InvoiceMailer.invoice_email(@account.id, @order.id).deliver
+
   end
 end
