@@ -1,7 +1,18 @@
+<div class="account-header">
+  <div class="d-flex justify-content-start">
+      <div class="col-1 p-2 offset-1">
+        <%= image_tag(@account.logo_url(:thumb), class: 'd-flex align-self-center header-logo-image' )%>
+      </div>
+      <div class="col-3 p-3">
+        <h1><%= @account.business_name %></h1>
+        <h3 class="text-muted">Spring Promo 2017</h3>
+      </div>
+  </div>
+</div>
 <div class="container">
   <br>
   <div class="row">
-    <div class="col-4 offset-1">
+    <div class="col-4 offset-4">
       <h6>Shipping Details: </h6>
       <br>
       <%= form_for [@account, @order] do |f| %>

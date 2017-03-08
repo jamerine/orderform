@@ -8,20 +8,14 @@ class SizesController < ApplicationController
 
   def create
     @product = Product.find(params[:size][:product_id])
-    @find_size = Size.find_by(name: params[:size][:name], price: params[:size][:price])
-    if @find_size
-      @find_product_size = @product.products_sizes.find_by(product_id: @product.id, size_id: @find_size.id)
-      if @find_product_size
-        @message = "Already Created and assigned"
-      else
-        @size = ProductsSize.create(product_id: params[:size][:product_id], size_id: @find_size.id)
-        @message = "Size Assigned"
-      end
-    else
-      @size = @product.sizes.create(size_params)
-      @message = "Size Created and Assigned."
-    end
-     redirect_to account_product_path(account_id: @product.account_id, id: @product), notice: @message
+    @size = @product.sizes.create(size_params)
+    redirect_to account_product_path(account_id: @product.account_id, id: @product), notice: "Size has been created"
+  end
+
+  def create
+    @product = Product.find(params[:color][:product_id])
+    @color = @product.colors.create(color_params)
+    redirect_to account_product_path(account_id: @product.account_id, id: @product)
   end
 
   def destroy
