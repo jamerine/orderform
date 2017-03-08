@@ -1,0 +1,4 @@
+<% if @order_item.destroyed? %>
+   $('#order_item-' +<%= @order_item.id %>).hide();
+   $('.flash').prepend("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= @message %></div>");
+ <% end %>
