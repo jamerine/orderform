@@ -32,8 +32,10 @@ class OrdersController < ApplicationController
   def shipping_details_save
     @order = Order.find(params[:order_id])
     @account = @order.account
-    @order.assign_attributes(status: 2)
+    @order.assign_attributes(order_params)
+    @order.assign_attributes(status: 1)
     if @order.save
+      OrderWorker.perform_async(@account.id, @order.id)
       redirect_to @account, notice: 'Order has been placed. Please check your email for an receipt of your order.'
     else
       redirect_to @order, notice: 'There was an error with placing the order.  Please try again.'
@@ -43,7 +45,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:first_name, :last_name, :color_id, :order_id, :unit_price, :quantity, :total_price, :account_id)
+    params.require(:order).permit(:first_name, :last_name, :email, :phone_number, :address_line_1, :address_line_2, :city, :state, :zip_code, :color_id, :order_id, :unit_price, :quantity, :total_price, :account_id)
   end
 
 end

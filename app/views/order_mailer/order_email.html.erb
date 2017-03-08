@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for ordering from <%= @account.business_name %>, <%= @order.first_name %></h1>
+    <p>
+      You have successfully created a bulk order that is now being processed by <%= @account.business_name %>.
+    </p>
+    <p>
+      Your order, totaling <b><%= @order.subtotal %></b>, consists of:
+    </p>
+    <ul>
+      <% @order.order_items.find_each do |item| %>
+      <li><%= item.product.name %> * <%= item.quantity %> @ <%= number_to_currency(item.total_price) %></li>
+    <% end %>
+  </ul>
+    <p>We will be in touch with shipping costs and information.</p>
+
+    <p>Have a great day!</p>
+  </body>
+</html>
