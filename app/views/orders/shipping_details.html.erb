@@ -93,6 +93,8 @@
       </div>
       <div class="row justify-content-end">
         <p>shipping not included</p>
+        <p><%= link_to 'PDF', account_order_order_invoice_pdf_path(@account, @order, format: :pdf)  %></p>
+
       </div>
     </div>
   </div>

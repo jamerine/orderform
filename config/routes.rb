@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       resources :order_items do
         delete :delete_item
       end
+      get :order_invoice_pdf
     end
 
   end
