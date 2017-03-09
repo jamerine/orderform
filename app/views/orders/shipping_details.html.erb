@@ -5,9 +5,8 @@
       </div>
       <div class="col-3 p-3">
         <h1><%= @account.business_name %></h1>
-        <h3 class="text-muted">Spring Promo 2017</h3>
+        <h3 class="text-muted">Spring Bulk 2017</h3>
       </div>
-
   </div>
 
 </div>
@@ -75,7 +74,7 @@
       <% @order_items.each do |item| %>
         <div class="row shipping_order_detail">
             <div class="col-4">
-                <%= image_tag(item.product.colors.first.color_sample_url(:thumb), class: 'd-flex align-self-center img-thumbnail' )%>
+                <%= image_tag(item.color.color_sample_url(:thumb), class: 'd-flex align-self-center img-thumbnail' )%>
             </div>
             <div class="col-6 offset-1">
                 <p><%= item.product.name %></p>
