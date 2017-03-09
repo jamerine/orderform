@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = OrderInvoicePdf.new(@account, @order, view_context)
+        pdf = OrderInvoicePdf.new(@account, @order)
         send_data pdf.render, filename: "#{ @account.business_name }_order_#{ @order.id }.pdf",
                               type: "application/pdf",
                               disposition: "inline"

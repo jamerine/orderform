@@ -1,10 +1,9 @@
 class OrderInvoicePdf < Prawn::Document
 
-  def initialize(account, order, view)
+  def initialize(account, order)
     super()
     @account = account
     @order = order
-    @view = view
     header
     move_down 50
     shipping_details
@@ -58,8 +57,8 @@ class OrderInvoicePdf < Prawn::Document
 
   def order_details_data
     @data = [["Name", "Item", "Style", "Color", "Size", "Quan.", "Total"]]
-    @data += @order.order_items.map { |e| [e.product.name, e.product.item_number, e.product.style_number, e.color.name, e.size.name, e.quantity, price(e.total_price)] }
-    @data += [[{:content => "", :colspan => 3}, {:content => "Subtotal", :colspan => 2}, {:content => "#{price(@order.subtotal)}", :colspan => 2} ]]
+    @data += @order.order_items.map { |e| [e.product.name, e.product.item_number, e.product.style_number, e.color.name, e.size.name, e.quantity, "$#{e.total_price}"] }
+    @data += [[{:content => "", :colspan => 3}, {:content => "Subtotal", :colspan => 2}, {:content => "$#{@order.subtotal}", :colspan => 2} ]]
   end
 
 
