@@ -8,7 +8,6 @@ class OrderInvoicePdf < Prawn::Document
     header
     move_down 50
     shipping_details
-    stroke_axis
     move_down 75
     order_details
     move_down 50
