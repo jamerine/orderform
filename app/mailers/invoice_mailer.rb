@@ -1,7 +1,7 @@
 class InvoiceMailer < ApplicationMailer
   default :from => "jason@dittoh.com"
 
-  def invoice_email(account_id, order_id)
+  def invoice_email(account_id, order_id, pdf)
     @account = Account.find(account_id)
     @order = Order.find(order_id)
     pdf = OrderInvoicePdf.new(@account, @order, view_context)
