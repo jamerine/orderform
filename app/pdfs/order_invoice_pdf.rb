@@ -1,9 +1,10 @@
 class OrderInvoicePdf < Prawn::Document
 
-  def initialize(account, order)
+  def initialize(account, order, view_context)
     super()
     @account = account
     @order = order
+    @view = view_context
     header
     move_down 50
     shipping_details

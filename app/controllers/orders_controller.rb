@@ -35,7 +35,9 @@ class OrdersController < ApplicationController
     @order.assign_attributes(order_params)
     @order.assign_attributes(status: 1)
     if @order.save
-      OrderWorker.perform_async(@account.id, @order.id)
+      pdf = OrderInvoicePdf.new(@account, @order, view_context)
+      OrderMailer.order_email(@account.id, @order.id, pdf).deliver
+      InvoiceMailer.invoice_email(@account.id, @order.id, pdf).deliver
       redirect_to @account, notice: 'Order has been placed. Please check your email for an receipt of your order.'
     else
       redirect_to @order, notice: 'There was an error with placing the order.  Please try again.'
