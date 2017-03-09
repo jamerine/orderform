@@ -48,7 +48,10 @@ class OrderInvoicePdf < Prawn::Document
 
       row(-1).borders = [:top]
       # row(1).columns(0..14).borders = []
-      row(1..-2).align = :left
+      row(1..-2).columns(0..5).align = :left
+      row(1..-2).columns(6).align = :right
+      row(-1).align = :right
+      self.cell_style = { size: 10 }
       self.header = true
     end
   end
@@ -56,7 +59,7 @@ class OrderInvoicePdf < Prawn::Document
   def order_details_data
     @data = [["Name", "Item", "Style", "Color", "Size", "Quan.", "Total"]]
     @data += @order.order_items.map { |e| [e.product.name, e.product.item_number, e.product.style_number, e.color.name, e.size.name, e.quantity, price(e.total_price)] }
-    @data += [[{:content => "", :colspan => 4}, {:content => "Subtotal", :colspan => 2}, "#{ price(@order.subtotal) }"]]
+    @data += [[{:content => "", :colspan => 3}, {:content => "Subtotal", :colspan => 2}, {:content => "#{price(@order.subtotal)}", :colspan => 2} ]]
   end
 
 

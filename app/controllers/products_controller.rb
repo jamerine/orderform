@@ -76,7 +76,7 @@ class ProductsController < ApplicationController
   def assign_sizes
     @product = Product.find(params[:product_id])
     @size = Size.find(params[:id])
-    @products_size = ProductsSize.new(product_id: @product.id, color_id: @color.id)
+    @products_size = ProductsSize.new(product_id: @product.id, size_id: @size.id)
     if @products_size.save
       redirect_to account_product_path(account_id: @product.account_id, id: @product.id), notice: "Size has been added"
     else

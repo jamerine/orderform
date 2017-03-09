@@ -4,7 +4,7 @@
 <div class="container">
   <p class="text-center">Select a product!</p>
   <div class="row">
-    <% @products.each do |product| %>
+    <% @products.order(id: :asc).each do |product| %>
       <div class="col col-4">
         <div class="card product-box">
             <div class="row">
