@@ -40,6 +40,7 @@ gem 'devise'
 
 # Use bootstrap for styling
 gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'rails-assets-tether', '>= 1.1.0'
 
 gem 'font-awesome-rails'
 # Use for bootstrap

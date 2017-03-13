@@ -22,7 +22,7 @@
   @account_1.save
 
 
-@product_1 = @account_1.products.create(name: 'Hooded Sweatshirt', item_number: 'LWSP17-100', style_number: 'G185', description: '8 oz. 50/50. 3 color screen. Front pouch pocket
+@product_1 = @account_1.products.create(name: 'Hooded Sweatshirt', item_number: 'LWSP17-100', style_number: 'G185', description: '8 oz. 50/50. 3 color screen. Front pouch pocket.
 ')
 
   @color_1 = @product_1.colors.create(name: 'Safety Green', hex_color: '#C6D219'  )
@@ -174,8 +174,7 @@
 
 ################### START PRODUCT ########################
 
-  @product_7 = @account_1.products.create(name: "Low Profile Twill Cap", item_number: 'LWSP17-107', style_number: 'i5000', description: 'Lightweight brushed cotton twill.  Six panel structured cap. Fabrix strap with two piece Velcro®.
-')
+  @product_7 = @account_1.products.create(name: "Low Profile Twill Cap", item_number: 'LWSP17-107', style_number: 'i5000', description: 'Lightweight brushed cotton twill.  Six panel structured cap. Fabrix strap with two piece Velcro®.')
 
     @color_1 = @product_7.colors.create(name: 'Black', hex_color: '#000000'  )
       File.open('/Users/jasonamerine/Dittoh/LW Supply Images/black_hat.jpg') do |f|
