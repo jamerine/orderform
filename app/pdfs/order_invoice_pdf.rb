@@ -8,7 +8,8 @@ class OrderInvoicePdf < Prawn::Document
     header
     move_down 50
     shipping_details
-    move_down 75
+    billing_details
+    move_down 25
     order_details
     move_down 50
     footer
@@ -26,20 +27,39 @@ class OrderInvoicePdf < Prawn::Document
     logo
       move_down 30
     text "2017 #{ @account.business_name } Order Invoice", size: 14, style: :bold, align: :center
-    text "Spring Promo", size: 14, style: :bold, align: :center
+    text "Spring Bulk", size: 14, style: :bold, align: :center
   end
 
   def shipping_details
-    text "Shipping Details:", size: 12, style: :bold
-    text "#{ @order.first_name } #{ @order.last_name}", size: 12, :indent_paragraphs => 30
-    text "#{ @order.address_line_1 }, #{ @order.address_line_2}", size: 12, :indent_paragraphs => 30
-    text "#{ @order.city }, #{ @order.state} #{ @order.zip_code}", size: 12, :indent_paragraphs => 30
-    text "#{ @order.phone_number }  #{ @order.email}", size: 12, :indent_paragraphs => 30
+    bounding_box([0, 550], :width => 275, :height => 125) do
+      text "Shipping Details:", size: 12, style: :bold
+      text "#{ @order.shipping_first_name } #{ @order.shipping_last_name}", size: 11, :indent_paragraphs => 30
+      text "#{ @order.shipping_address_line_1 }, #{ @order.shipping_address_line_2}", size: 11, :indent_paragraphs => 30
+      text "#{ @order.shipping_city }, #{ @order.shipping_state} #{ @order.shipping_zip_code}" , size: 11, :indent_paragraphs => 30
+      text "#{ @order.shipping_phone_number}", size: 11, :indent_paragraphs => 30
+      text "#{ @order.shipping_email}", size: 11, :indent_paragraphs => 30
+      text "Branch #: #{ @order.shipping_branch_number}", size: 11, :indent_paragraphs => 30
+      transparent(0) { stroke_bounds }
+    end
+  end
+
+  def billing_details
+    bounding_box([275, 550], :width => 275, :height => 125) do
+      text "Billing Details:", size: 11, style: :bold
+      text "#{ @order.billing_first_name } #{ @order.billing_last_name}", size: 11, :indent_paragraphs => 30
+      text "#{ @order.billing_address_line_1 }, #{ @order.billing_address_line_2}", size: 11, :indent_paragraphs => 30
+      text "#{ @order.billing_city }, #{ @order.billing_state} #{ @order.billing_zip_code}" , size: 11, :indent_paragraphs => 30
+      text "#{ @order.billing_phone_number}", size: 11, :indent_paragraphs => 30
+      text "#{ @order.billing_email}", size: 11, :indent_paragraphs => 30
+      text "Branch #: #{ @order.billing_branch_number}", size: 11, :indent_paragraphs => 30
+      transparent(0) { stroke_bounds }
+    end
+
   end
 
   def order_details
     text "Order Details:", size: 12, style: :bold
-    table order_details_data, :column_widths => { 0 => 130, 1 => 85, 2 => 40, 3 => 100, 4 => 65, 5 => 50, 6 => 70 } do
+    table order_details_data, :column_widths => { 0 => 140, 1 => 90, 2 => 100, 3 => 65, 4 => 70, 5 => 70 } do
       self.position = :center
       row(0).font_style = :bold
       row(-1).font_style = :bold
@@ -57,17 +77,17 @@ class OrderInvoicePdf < Prawn::Document
   end
 
   def order_details_data
-    @data = [["Name", "Item", "Style", "Color", "Size", "Quan.", "Total"]]
-    @data += @order.order_items.map { |e| [e.product.name, e.product.item_number, e.product.style_number, e.color.name, e.size.name, e.quantity, "$#{e.total_price}"] }
-    @data += [[{:content => "", :colspan => 3}, {:content => "Subtotal", :colspan => 2}, {:content => "$#{@order.subtotal}", :colspan => 2} ]]
+    @data = [["Name", "Item", "Color", "Size", "Quantity", "Total"]]
+    @data += @order.order_items.map { |e| [e.product.name, e.product.item_number, e.color.name, e.size.name, e.quantity, "#{price(e.total_price)}"] }
+    @data += [[{:content => "", :colspan => 2}, {:content => "Subtotal", :colspan => 2}, {:content => "#{price(@order.subtotal)}", :colspan => 2} ]]
   end
 
 
   def footer
     text "Questions? Contact Mary:", style: :bold
-    text "Phone: (608)-755-0144",:indent_paragraphs => 30
-    text "Email: mary@mmpric.net",:indent_paragraphs => 30
-    text "Fax: (608) 755-0889",:indent_paragraphs => 30
+    text "Phone: #{ @account.phone_number}",:indent_paragraphs => 30
+    text "Email: #{ @account.email_address}",:indent_paragraphs => 30
+    text "Fax: #{ @account.fax_number}",:indent_paragraphs => 30
   end
 
 

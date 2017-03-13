@@ -51,7 +51,7 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:business_name, :address_line_1, :address_line_2, :address_line_2, :city,
+    params.require(:account).permit(:business_name, :contact_first_name, :contact_last_name, :address_line_1, :address_line_2, :address_line_2, :city,
         :state, :zip_code, :country, :website, :phone_number, :phone_number_extension, :fax_number, :email_address, :subdomain, :logo
     )
   end

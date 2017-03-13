@@ -5,67 +5,137 @@
       </div>
       <div class="col-3 p-3">
         <h1><%= @account.business_name %></h1>
-        <h3 class="text-muted">Spring Promo 2017</h3>
+        <h3 class="text-muted">Spring Bulk 2017</h3>
       </div>
   </div>
 </div>
 <div class="container">
   <br>
+  <%= form_for [@account, @order] do |f| %>
   <div class="row">
-    <div class="col-4 offset-4">
-      <h6>Shipping Details: </h6>
+    <div class="col-4 offset-1">
+      <h6>Billing Details: </h6>
       <br>
-      <%= form_for [@account, @order] do |f| %>
         <div class="form-group">
           <div class="row">
             <div class="col-6">
-              <%= f.text_field :first_name, class: 'form-control', :placeholder => :first_name, required: true %>
+              <%= f.text_field :billing_first_name, class: 'form-control', :placeholder => "First name", required: true %>
             </div>
             <div class="col-6">
-              <%= f.text_field :last_name, class: 'form-control', :placeholder => :last_name, required: true %>
+              <%= f.text_field :billing_last_name, class: 'form-control', :placeholder => "Last name", required: true %>
             </div>
           </div>
         </div>
         <div class="form-group">
           <div class="row">
             <div class="col-8">
-              <%= f.text_field :address_line_1, class: 'form-control', :placeholder => "Address", required: true %>
+              <%= f.text_field :billing_address_line_1, class: 'form-control', :placeholder => "Address", required: true %>
             </div>
             <div class="col-4">
-              <%= f.text_field :address_line_2, class: 'form-control', :placeholder => "Apt/Bld #"%>
+              <%= f.text_field :billing_address_line_2, class: 'form-control', :placeholder => "Apt/Bld #"%>
             </div>
           </div>
         </div>
         <div class="form-group">
           <div class="row">
             <div class="col-6">
-              <%= f.text_field :city, class: 'form-control', :placeholder => :city, required: true %>
+              <%= f.text_field :billing_city, class: 'form-control', :placeholder => "City", required: true %>
             </div>
             <div class="col-6">
-              <%= f.text_field :state, class: 'form-control', :placeholder => :state, required: true %>
+              <%= f.text_field :billing_state, class: 'form-control', :placeholder => "State", required: true %>
             </div>
           </div>
         </div>
         <div class="form-group">
           <div class="row">
             <div class="col-4">
-              <%= f.text_field :zip_code, class: 'form-control', :placeholder => :zip_code, required: true %>
+              <%= f.text_field :billing_zip_code, class: 'form-control', :placeholder => "Zip code", required: true %>
             </div>
             <div class="col-8">
-              <%= f.text_field :phone_number, class: 'form-control', :placeholder => :phone_number, required: true %>
+              <%= f.text_field :billing_phone_number, class: 'form-control', :placeholder => "Phone number", required: true %>
             </div>
           </div>
         </div>
         <div class="form-group">
-          <%= f.text_field :email, class: 'form-control', :placeholder => "Email address", required: true %>
+          <%= f.text_field :billing_email, class: 'form-control', :placeholder => "Email address", required: true %>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-6">
+              <%= f.text_field :billing_branch_number, class: 'form-control', :placeholder => "Billing Branch #" %>
+            </div>
+          </div>
+        </div>
+
+
+        <br>
+
+      </div>
+    <div class="col-4 offset-2">
+      <h6>Shipping Details:</h6>
+      <%= f.label :same_as_billing %>
+      <%= f.check_box :same_as_billing %>
+      <br>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-6">
+              <%= f.text_field :shipping_first_name, class: 'form-control', :placeholder => "First name" %>
+            </div>
+            <div class="col-6">
+              <%= f.text_field :shipping_last_name, class: 'form-control', :placeholder => "Last name" %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-8">
+              <%= f.text_field :shipping_address_line_1, class: 'form-control', :placeholder => "Address" %>
+            </div>
+            <div class="col-4">
+              <%= f.text_field :shipping_address_line_2, class: 'form-control', :placeholder => "Apt/Bld #"%>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-6">
+              <%= f.text_field :shipping_city, class: 'form-control', :placeholder => "City" %>
+            </div>
+            <div class="col-6">
+              <%= f.text_field :shipping_state, class: 'form-control', :placeholder => "State"%>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-4">
+              <%= f.text_field :shipping_zip_code, class: 'form-control', :placeholder => "Zip code" %>
+            </div>
+            <div class="col-8">
+              <%= f.text_field :shipping_phone_number, class: 'form-control', :placeholder => "Phone number" %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :shipping_email, class: 'form-control', :placeholder => "Email address" %>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-6">
+              <%= f.text_field :shipping_branch_number, class: 'form-control', :placeholder => "Shipping branch #" %>
+            </div>
+          </div>
         </div>
         <br>
-        <div class="row justify-content-md-center">
-          <div class="actions">
-            <%= f.submit "Start Bulk Order", class: 'btn add-to-cart-button'%>
-          </div>
-        </div>
-      <% end %>
+
+      </div>
+
+
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="actions">
+      <%= f.submit "Start Bulk Order", class: 'btn add-to-cart-button'%>
     </div>
   </div>
+  <% end %>
 </div>

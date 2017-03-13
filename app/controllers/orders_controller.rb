@@ -16,6 +16,19 @@ class OrdersController < ApplicationController
   def create
     @account = Account.find(params[:account_id])
     @order = @account.orders.new(order_params)
+    if params[:order][:same_as_billing]
+      @order.assign_attributes(
+      shipping_first_name: params[:order][:billing_first_name],
+      shipping_last_name: params[:order][:billing_last_name],
+      shipping_email: params[:order][:billing_email],
+      shipping_phone_number: params[:order][:billing_phone_number] ,
+      shipping_address_line_1: params[:order][:billing_address_line_1],
+      shipping_address_line_2: params[:order][:billing_address_line_2],
+      shipping_city: params[:order][:billing_city],
+      shipping_state: params[:order][:billing_state],
+      shipping_zip_code: params[:order][:billing_zip_code])
+    end
+
     if @order.save
       redirect_to account_order_path(@account, @order.id), notice: "Order Process has begun successfully."
     else
@@ -61,7 +74,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:first_name, :last_name, :email, :phone_number, :address_line_1, :address_line_2, :city, :state, :zip_code, :color_id, :order_id, :unit_price, :quantity, :total_price, :account_id)
+    params.require(:order).permit(:shipping_first_name, :shipping_last_name, :shipping_email, :shipping_phone_number, :shipping_address_line_1, :shipping_address_line_2, :shipping_city, :shipping_state, :shipping_zip_code, :billing_first_name, :billing_last_name, :billing_email, :billing_phone_number, :billing_address_line_1, :billing_address_line_2, :billing_city, :billing_state, :billing_zip_code, :order_id, :account_id, :same_as_billing,  :status, :subtotal, :tax, :shipping, :total, :shipping_branch_number, :billing_branch_number)
   end
 
 end

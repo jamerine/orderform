@@ -2,6 +2,8 @@ class CreateAccounts < ActiveRecord::Migration[5.0]
   def change
     create_table :accounts do |t|
       t.string :business_name, null: false
+      t.string :contact_first_name
+      t.string :contact_last_name
       t.string :address_line_1
       t.string :address_line_2
       t.string :city

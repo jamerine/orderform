@@ -20,47 +20,99 @@
         <div class="form-group">
           <div class="row">
             <div class="col-6">
-              <%= f.text_field :first_name, class: 'form-control', :placeholder => :first_name, required: true %>
+              <%= f.text_field :shipping_first_name, class: 'form-control', :placeholder => :shipping_first_name, required: true %>
             </div>
             <div class="col-6">
-              <%= f.text_field :last_name, class: 'form-control', :placeholder => :last_name, required: true %>
+              <%= f.text_field :shipping_last_name, class: 'form-control', :placeholder => :shipping_last_name, required: true %>
             </div>
           </div>
         </div>
         <div class="form-group">
           <div class="row">
             <div class="col-8">
-              <%= f.text_field :address_line_1, class: 'form-control', :placeholder => "Address", required: true %>
+              <%= f.text_field :shipping_address_line_1, class: 'form-control', :placeholder => "Address", required: true %>
             </div>
             <div class="col-4">
-              <%= f.text_field :address_line_2, class: 'form-control', :placeholder => "Apt/Bld #"%>
+              <%= f.text_field :shipping_address_line_2, class: 'form-control', :placeholder => "Apt/Bld #"%>
             </div>
           </div>
         </div>
         <div class="form-group">
           <div class="row">
             <div class="col-6">
-              <%= f.text_field :city, class: 'form-control', :placeholder => :city, required: true %>
+              <%= f.text_field :shipping_city, class: 'form-control', :placeholder => :shipping_city, required: true %>
             </div>
             <div class="col-6">
-              <%= f.text_field :state, class: 'form-control', :placeholder => :state, required: true %>
+              <%= f.text_field :shipping_state, class: 'form-control', :placeholder => :shipping_state, required: true %>
             </div>
           </div>
         </div>
         <div class="form-group">
           <div class="row">
             <div class="col-4">
-              <%= f.text_field :zip_code, class: 'form-control', :placeholder => :zip_code, required: true %>
+              <%= f.text_field :shipping_zip_code, class: 'form-control', :placeholder => :shipping_zip_code, required: true %>
             </div>
             <div class="col-8">
-              <%= f.text_field :phone_number, class: 'form-control', :placeholder => :phone_number, required: true %>
+              <%= f.text_field :shipping_phone_number, class: 'form-control', :placeholder => :shipping_phone_number, required: true %>
             </div>
           </div>
         </div>
         <div class="form-group">
-          <%= f.text_field :email, class: 'form-control', :placeholder => "Email address", required: true %>
+          <%= f.text_field :shipping_email, class: 'form-control', :placeholder => "Email address", required: true %>
         </div>
+        <div class="form-group">
+          <%= f.text_field :shipping_branch_number, class: 'form-control', :placeholder => "Shipping Branch #" %>
+        </div>
+
         <br>
+        <h6>Billing Details: </h6>
+        <br>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-6">
+              <%= f.text_field :billing_first_name, class: 'form-control', :placeholder => :billing_first_name, required: true %>
+            </div>
+            <div class="col-6">
+              <%= f.text_field :billing_last_name, class: 'form-control', :placeholder => :billing_last_name, required: true %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-8">
+              <%= f.text_field :billing_address_line_1, class: 'form-control', :placeholder => "Address", required: true %>
+            </div>
+            <div class="col-4">
+              <%= f.text_field :billing_address_line_2, class: 'form-control', :placeholder => "Apt/Bld #"%>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-6">
+              <%= f.text_field :billing_city, class: 'form-control', :placeholder => :billing_city, required: true %>
+            </div>
+            <div class="col-6">
+              <%= f.text_field :billing_state, class: 'form-control', :placeholder => :billing_state, required: true %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-4">
+              <%= f.text_field :billing_zip_code, class: 'form-control', :placeholder => :billing_zip_code, required: true %>
+            </div>
+            <div class="col-8">
+              <%= f.text_field :billing_phone_number, class: 'form-control', :placeholder => :billing_phone_number, required: true %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :billing_email, class: 'form-control', :placeholder => "Email address", required: true %>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :billing_branch_number, class: 'form-control', :placeholder => "Billing Branch #"%>
+        </div>
         <div class="row justify-content-md-center">
           <div class="actions">
             <%= f.submit "Send Order", class: 'btn add-to-cart-button'%>
@@ -72,7 +124,7 @@
       <h6>Order Details:</h6>
       <br>
       <% @order_items.each do |item| %>
-        <div class="row shipping_order_detail">
+        <div class="row billing_order_detail">
             <div class="col-4">
                 <%= image_tag(item.color.color_sample_url(:thumb), class: 'd-flex align-self-center img-thumbnail' )%>
             </div>
@@ -98,3 +150,7 @@
     </div>
   </div>
 </div>
+<br>
+<br>
+<br>
+<br>

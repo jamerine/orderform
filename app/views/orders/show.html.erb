@@ -19,7 +19,8 @@
               <%= image_tag(product.colors.first.color_sample_url(:thumb), class: 'mx-auto d-block product-block-image' )%>
           </div>
           <div class="product-box-button">
-            <%= link_to 'Add To Cart', new_account_order_order_item_path(account_id: @account.id, order_id: @order.id, id: product.id), class: 'btn add-to-cart-button float-right' %>
+                <p class="float-left item-number-cart"><%= product.item_number %></p>
+                <%= link_to 'Add To Cart', new_account_order_order_item_path(account_id: @account.id, order_id: @order.id, id: product.id), class: 'btn add-to-cart-button float-right' %>
           </div>
         </div>
       </div>

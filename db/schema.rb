@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 20170307053259) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "business_name",          null: false
+    t.string   "contact_first_name"
+    t.string   "contact_last_name"
     t.string   "address_line_1"
     t.string   "address_line_2"
     t.string   "city"
@@ -61,22 +63,34 @@ ActiveRecord::Schema.define(version: 20170307053259) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "status"
-    t.decimal  "subtotal",       precision: 12, scale: 2
-    t.decimal  "tax",            precision: 12, scale: 2
-    t.decimal  "shipping",       precision: 12, scale: 2
-    t.decimal  "total",          precision: 12, scale: 2
+    t.decimal  "subtotal",                precision: 12, scale: 2
+    t.decimal  "tax",                     precision: 12, scale: 2
+    t.decimal  "shipping",                precision: 12, scale: 2
+    t.decimal  "total",                   precision: 12, scale: 2
     t.integer  "account_id"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "phone_number"
-    t.string   "address_line_1"
-    t.string   "address_line_2"
-    t.string   "city"
-    t.string   "state"
-    t.integer  "zip_code"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.string   "shipping_first_name"
+    t.string   "shipping_last_name"
+    t.string   "shipping_email"
+    t.string   "shipping_branch_number"
+    t.string   "shipping_phone_number"
+    t.string   "shipping_address_line_1"
+    t.string   "shipping_address_line_2"
+    t.string   "shipping_city"
+    t.string   "shipping_state"
+    t.integer  "shipping_zip_code"
+    t.string   "billing_first_name"
+    t.string   "billing_last_name"
+    t.string   "billing_email"
+    t.string   "billing_branch_number"
+    t.string   "billing_phone_number"
+    t.string   "billing_address_line_1"
+    t.string   "billing_address_line_2"
+    t.string   "billing_city"
+    t.string   "billing_state"
+    t.integer  "billing_zip_code"
+    t.boolean  "same_as_billing"
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.index ["account_id"], name: "index_orders_on_account_id", using: :btree
   end
 
