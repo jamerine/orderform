@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h4>There is a new Order from <%= @order.first_name %> <%= @order.last_name %></h4>
+    <h4>There is a new Order from <%= @order.shipping_first_name %> <%= @order.shipping_last_name %></h4>
     <p>
       The order totals <b><%= number_to_currency(@order.subtotal) %></b>, consisting of:
     </p>
@@ -29,10 +29,10 @@
     </table>
   <br>
   <h4>Shipping Details</h4>
-  <p><%= @order.first_name %> <%= @order.last_name %></p>
-  <p><%= @order.address_line_1 %>, <%= @order.address_line_2 %></p>
-  <p><%= @order.city %>, <%= @order.state %> <%= @order.zip_code %></p>
-  <p><%= @order.phone_number %>, <%= @order.email %>
+  <p><%= @order.shipping_first_name %> <%= @order.shipping_last_name %></p>
+  <p><%= @order.shipping_address_line_1 %>, <%= @order.shipping_address_line_2 %></p>
+  <p><%= @order.shipping_city %>, <%= @order.shipping_state %> <%= @order.shipping_zip_code %></p>
+  <p><%= @order.shipping_phone_number %>, <%= @order.shipping_email %>
   <br>
   <h4>Have a great day!</h4>
   </body>

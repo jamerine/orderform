@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h4>Thank you for ordering from <%= @account.business_name %>, <%= @order.first_name %></h4>
+    <h4>Thank you for ordering from <%= @account.business_name %>, <%= @order.billing_first_name %></h4>
     <p>
       You have successfully created a bulk order that is now being processed by <%= @account.business_name %>.
     </p>
@@ -18,10 +18,10 @@
     </ul>
     <p>We will be in touch with shipping costs and information.</p>
     <h3>Questions?</h3>
-    <p>Contact Mary:</p>
-    <p>Phone: (608)-755-0144</p>
-    <p>Email: mary@mmpric.net </p>
-    <p>Fax: (608) 755-0889</p>
+    <p>Contact <%= @account.contact_first_name %>:</p>
+    <p>Phone: <%= @account.phone_number %></p>
+    <p>Email: <%= @account.email_address %> </p>
+    <p>Fax: <%= @account.fax_number %></p>
     <br>
     <h5>Have a great day!</h5>
   </body>
