@@ -28,7 +28,6 @@
                 <div class="media-body">
                   <p class="new-order-item-header"><b><%= @product.name %>: <%= number_to_currency(@product.sizes.first.price) %></b></p>
                   <p>Description: <%= @product.description %></p>
-                  <p>Item Number: <%= @product.item_number %></p>
                   <br>
                   <%= f.hidden_field :product_id, value: "#{@product.id}" %>
                   <%= f.hidden_field :order_id, value: "#{@account.id}" %>

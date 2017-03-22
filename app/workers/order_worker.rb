@@ -9,6 +9,5 @@ class OrderWorker
     pdf = OrderInvoicePdf.new(@account, @order)
     OrderMailer.order_email(@account.id, @order.id, pdf).deliver
     InvoiceMailer.invoice_email(@account.id, @order.id, pdf).deliver
-
   end
 end
