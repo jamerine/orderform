@@ -19,8 +19,7 @@ class OrderInvoicePdf < Prawn::Document
 
 
   def logo
-    logopath =  "#{ @account.logo_url }"
-    image logopath, :width => 50, :height => 50
+
   end
 
   def header
