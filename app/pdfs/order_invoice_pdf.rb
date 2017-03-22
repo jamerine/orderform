@@ -19,7 +19,7 @@ class OrderInvoicePdf < Prawn::Document
 
 
   def logo
-    logopath =  "#{Rails.root}/public/#{ @account.logo_url }"
+    logopath =  "#{ @account.logo_url }"
     image logopath, :width => 50, :height => 50
   end
 
