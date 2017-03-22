@@ -77,7 +77,7 @@ class OrderInvoicePdf < Prawn::Document
   def order_details_data
     @data = [["Name", "Color", "Size", "Quantity", "Total"]]
     @data += @order.order_items.map { |e| [e.product.name, e.color.name, e.size.name, e.quantity, "#{price(e.total_price)}"] }
-    @data += [[{:content => "", :colspan => 2}, {:content => "Subtotal", :colspan => 2}, {:content => "#{price(@order.subtotal)}", :colspan => 2} ]]
+    @data += [[{:content => "", :colspan => 2}, {:content => "Subtotal", :colspan => 1}, {:content => "#{price(@order.subtotal)}", :colspan => 2} ]]
   end
 
 
