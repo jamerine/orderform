@@ -26,15 +26,9 @@
 ')
 
   @color_1 = @product_1.colors.create(name: 'Safety Green', hex_color: '#C6D219'  )
-    File.open('/Users/jasonamerine/Dittoh/LW Supply Images/hoodie_safety_green.jpg') do |f|
-      @color_1.color_sample = f
-    end
   @color_1.save
 
   @color_2 = @product_1.colors.create(name: 'Sports Grey', hex_color: '#97999B'  )
-    File.open('/Users/jasonamerine/Dittoh/LW Supply Images/hoodie_grey.jpg') do |f|
-      @color_2.color_sample = f
-    end
   @color_2.save
 
   @size_1 = @product_1.sizes.create(name: 'SM', price: 16.00)
@@ -54,9 +48,6 @@
   @product_2 = @account_1.products.create(name: 'Short Sleeve T-Shirt', item_number: 'LWSP17-101', style_number: 'G200', description: '6 oz. pre-shrunk 100% cotton. Safety Green is compliant with ANSI High Visibility Standards.')
 
     @color_1 = @product_2.colors.create(name: 'Safety Green', hex_color: '#C6D219'  )
-      File.open('/Users/jasonamerine/Dittoh/LW Supply Images/tshirt_safetygreen.jpg') do |f|
-        @color_1.color_sample = f
-      end
     @color_1.save
 
     @size_1 = @product_2.sizes.create(name: 'SM', price: 4.25)
@@ -73,9 +64,6 @@
   @product_3 = @account_1.products.create(name: 'Short Sleeve T-Shirt  "Values Shirt', item_number: 'LWSP17-102', style_number: 'G200', description: '6.0 oz., pre-shrunk 100% cotton.')
 
     @color_1 = @product_3.colors.create(name: 'Sports Grey', hex_color: '#97999B'  )
-      File.open('/Users/jasonamerine/Dittoh/LW Supply Images/values tshirt.jpg') do |f|
-        @color_1.color_sample = f
-      end
     @color_1.save
 
     @size_1 = @product_3.sizes.create(name: 'SM', price: 5.00)
@@ -92,21 +80,12 @@
   @product_4 = @account_1.products.create(name: "Men's Snag Protection Polo", item_number: 'LWSP17-103', style_number: 'TT21', description: '4.42 oz. 100% polyester. Embroidery 3 color. Snag-protection piqué with moisture-wicking.  UV protection performance & anti-microbia.')
 
     @color_1 = @product_4.colors.create(name: 'White', hex_color: '#FFFFFF'  )
-      File.open('/Users/jasonamerine/Dittoh/LW Supply Images/mens_polo_white.jpg') do |f|
-        @color_1.color_sample = f
-      end
     @color_1.save
 
     @color_2 = @product_4.colors.create(name: 'Sports Dark Navy', hex_color: '#293454'  )
-      File.open('/Users/jasonamerine/Dittoh/LW Supply Images/mens_polo_navy.jpg') do |f|
-        @color_2.color_sample = f
-      end
     @color_2.save
 
     @color_3 = @product_4.colors.create(name: 'Black', hex_color: '#000000'  )
-      File.open('/Users/jasonamerine/Dittoh/LW Supply Images/mens_polo.jpg') do |f|
-        @color_3.color_sample = f
-      end
     @color_3.save
 
     @size_1 = @product_4.sizes.create(name: 'SM', price: 14.50)

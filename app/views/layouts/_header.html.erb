@@ -1,11 +1,12 @@
 <div class="account-header">
   <div class="d-flex justify-content-start">
       <div class="col-1 p-2 offset-1">
-        <%= image_tag(account.logo_url(:thumb), class: 'd-flex align-self-center header-logo-image' )%>
+        <%= image_tag(account.logo_url, class: 'd-flex align-self-center header-logo-image' )%>
       </div>
       <div class="col-3 p-3">
         <h1><%= account.business_name %></h1>
         <h3 class="text-muted">Spring Bulk 2017</h3>
+        <p class="text-muted">Orders due by April 14, 2017</p>
       </div>
       <div class="col-3 ml-auto p-3">
         <%= link_to "Check Out", cart_path(order_id: order), class: 'cart-image' %>
