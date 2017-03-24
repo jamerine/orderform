@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
   def create
     @account = Account.find(params[:account_id])
     @order = @account.orders.new(order_params)
-    if params[:order][:same_as_billing]
+    if params[:order][:same_as_billing] == true
       @order.assign_attributes(
       shipping_first_name: params[:order][:billing_first_name],
       shipping_last_name: params[:order][:billing_last_name],
