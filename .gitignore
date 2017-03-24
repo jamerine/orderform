@@ -17,5 +17,4 @@
 .byebug_history
 
 /config/application.yml
-/public/uploads/color/*
-/public/uploads/tmp/*
+/public/uploads/*

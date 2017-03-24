@@ -127,13 +127,14 @@
       <% @order_items.each do |item| %>
         <div class="row billing_order_detail">
             <div class="col-4">
-                <%= image_tag(item.color.color_sample_url(:thumb), class: 'd-flex align-self-center img-thumbnail' )%>
+                <%= image_tag(item.color.color_sample_url(:thumb), class: 'd-flex align-self-center img-fluid' )%>
             </div>
             <div class="col-6 offset-1">
                 <p><%= item.product.name %></p>
-                <p><p class="color-circle" style="background: <%= item.color.hex_color %>"></p></p>
+                <p class="color-circle" style="background: <%= item.color.hex_color %>"></p>
                 <p>Price: <%= number_to_currency(item.total_price) %></p>
             </div>
+
         </div>
       <% end %>
       <hr>
@@ -146,7 +147,6 @@
       <div class="row justify-content-end">
         <p>shipping not included</p>
         <p><%= link_to 'PDF', account_order_order_invoice_pdf_path(@account, @order, format: :pdf)  %></p>
-
       </div>
     </div>
   </div>
