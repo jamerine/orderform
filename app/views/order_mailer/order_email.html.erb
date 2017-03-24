@@ -6,17 +6,17 @@
   <body>
     <h4>Thank you for ordering from <%= @account.business_name %>, <%= @order.billing_first_name %></h4>
     <p>
-      You have successfully created a bulk order that is now being processed by <%= @account.business_name %>.
+      You have successfully created a bulk order that is now being processed by MMPR, Inc.
     </p>
     <p>
       Your order, totaling <b><%= number_to_currency(@order.subtotal) %></b>, consists of:
     </p>
     <ul>
       <% @order.order_items.find_each do |item| %>
-        <li><%= item.product.name %> * <%= item.quantity %> @ <%= number_to_currency(item.total_price) %></li>
+        <li><%= item.product.name %> - <%= item.size.name %> * <%= item.quantity %> @ <%= number_to_currency(item.total_price) %></li>
       <% end %>
     </ul>
-    <p>We will be in touch with shipping costs and information.</p>
+    <p>Delivery time will be approx. 3 weeks after orders are received. A final invoice including shipping charges will be emailed upon fulfillment of the order.</p>
     <h3>Questions?</h3>
     <p>Contact <%= @account.contact_first_name %>:</p>
     <p>Phone: <%= @account.phone_number %></p>

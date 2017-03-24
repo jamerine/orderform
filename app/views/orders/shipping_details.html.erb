@@ -129,10 +129,28 @@
             <div class="col-4">
                 <%= image_tag(item.color.color_sample_url(:thumb), class: 'd-flex align-self-center img-fluid' )%>
             </div>
-            <div class="col-6 offset-1">
-                <p><%= item.product.name %></p>
-                <p class="color-circle" style="background: <%= item.color.hex_color %>"></p>
-                <p>Price: <%= number_to_currency(item.total_price) %></p>
+            <div class="col-8">
+              <p><%= item.product.name %></p>
+              <div class="row">
+                <div class="col-5">
+                  <p><b>Size:</b> <%= item.size.name %></p>
+                </div>
+                <div class="col-7">
+                  <p><b>Quantity:</b> <%= item.quantity %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8">
+                  <p><b>Price:</b> <%= number_to_currency(item.total_price) %></p>
+                </div>
+                <div class="col-4">
+                   <p class="color-circle" style="background: <%= item.color.hex_color %>"></p>
+                </div>
+
+              </div>
+              <div class="row">
+
+              </div>
             </div>
 
         </div>

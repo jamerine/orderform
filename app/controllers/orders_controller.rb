@@ -52,7 +52,7 @@ class OrdersController < ApplicationController
       pdf = OrderInvoicePdf.new(@account, @order, view_context)
       OrderMailer.order_email(@account.id, @order.id, pdf).deliver
       InvoiceMailer.invoice_email(@account.id, @order.id, pdf).deliver
-      redirect_to @account, notice: 'Order has been placed. Please check your email for an receipt of your order.'
+      redirect_to @account, notice: 'Your order has been placed. Please check your email for receipt of the order confirmation.'
     else
       redirect_to @order, notice: 'There was an error with placing the order.  Please try again.'
     end
