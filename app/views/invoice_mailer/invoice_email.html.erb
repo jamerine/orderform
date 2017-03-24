@@ -12,14 +12,14 @@
     <table>
       <tr>
         <th>Product</th>
-        <th>Style Number</th>
+        <th>Item Number<th>
         <th>Quantity</th>
         <th>Total Price</th>
       </tr>
         <% @order.order_items.find_each do |item| %>
       <tr>
         <td><%= item.product.name %></td>
-        <td><%= item.product.style_number %></td>
+        <td><%= item.product.item_number %></td>
         <td><%= item.quantity %></td>
         <td><%= number_to_currency(item.total_price) %></td>
       </tr>

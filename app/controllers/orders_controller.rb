@@ -26,7 +26,8 @@ class OrdersController < ApplicationController
       shipping_address_line_2: params[:order][:billing_address_line_2],
       shipping_city: params[:order][:billing_city],
       shipping_state: params[:order][:billing_state],
-      shipping_zip_code: params[:order][:billing_zip_code])
+      shipping_zip_code: params[:order][:billing_zip_code],
+      shipping_branch_number: params[:order][:billing_branch_number])
     end
 
     if @order.save
