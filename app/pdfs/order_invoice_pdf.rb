@@ -25,8 +25,8 @@ class OrderInvoicePdf < Prawn::Document
   def header
     logo
       move_down 30
-    text "2017 #{ @account.business_name } Order Invoice", size: 14, style: :bold, align: :center
-    text "Spring Bulk", size: 14, style: :bold, align: :center
+    text "#{ @account.business_name } Order Invoice", size: 14, style: :bold, align: :center
+    text "#{@account.order_form_subheading}", size: 14, style: :bold, align: :center
   end
 
   def shipping_details
@@ -82,7 +82,7 @@ class OrderInvoicePdf < Prawn::Document
 
 
   def footer
-    text "Questions? Contact Mary:", style: :bold
+    text "Questions? Contact #{ @account.contact_first_name}:", style: :bold
     text "Phone: #{ @account.phone_number}",:indent_paragraphs => 30
     text "Email: #{ @account.email_address}",:indent_paragraphs => 30
     text "Fax: #{ @account.fax_number}",:indent_paragraphs => 30

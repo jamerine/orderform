@@ -1,15 +1,4 @@
-<div class="account-header">
-  <div class="d-flex justify-content-start">
-      <div class="col-1 p-2 offset-1">
-        <%= image_tag(@account.logo_url, class: 'd-flex align-self-center header-logo-image' )%>
-      </div>
-      <div class="col-3 p-3">
-        <h1><%= @account.business_name %></h1>
-        <h3 class="text-muted">Spring Bulk 2017</h3>
-        <p class="text-muted">Orders due by April 14, 2017</p>
-      </div>
-  </div>
-</div>
+<%= render partial: 'layouts/header', locals: { account: @account, order: @order } %>
 <div class="container">
   <br>
   <%= form_for [@account, @order] do |f| %>

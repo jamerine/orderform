@@ -44,6 +44,15 @@ class AccountsController < ApplicationController
     @order_items = current_order.order_items
   end
 
+  def destroy
+    @account = Account.find(params[:id])
+    if @account.destroy
+      redirect_to accounts_path, notice: 'Account deleted successfully.'
+    else
+      redirect_to @account, alert: 'There was an issue deleting the account.'
+    end
+  end
+
   private
 
   def set_account
@@ -52,7 +61,7 @@ class AccountsController < ApplicationController
 
   def account_params
     params.require(:account).permit(:business_name, :contact_first_name, :contact_last_name, :address_line_1, :address_line_2, :address_line_2, :city,
-        :state, :zip_code, :country, :website, :phone_number, :phone_number_extension, :fax_number, :email_address, :subdomain, :logo
+        :state, :zip_code, :country, :website, :phone_number, :phone_number_extension, :fax_number, :email_address, :subdomain, :logo, :order_form_subheading, :orders_due_by
     )
   end
 

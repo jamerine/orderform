@@ -1,16 +1,23 @@
-<div class="container account-header">
+<div class="account-header">
   <div class="d-flex justify-content-start">
-      <div class="col-2 p-2">
+      <div class="col-1 p-2 offset-1">
         <%= image_tag(@account.logo_url, class: 'd-flex align-self-center header-logo-image' )%>
       </div>
       <div class="col-3 p-3">
         <h1><%= @account.business_name %></h1>
-        <h3 class="text-muted">Spring Bulk 2017</h3>
-        <p class="text-muted">Orders due by April 14, 2017</p>
+        <h3 class="text-muted"> <%= @account.order_form_subheading %>    </h3>
+        <p class="text-muted">Orders due by <%= @account.try(:orders_due_by).try(:strftime, "%B %d, %Y") %></p>
       </div>
-
+      <div class="col-3 ml-auto p-3">
+        <% if !@order.new_record? %>
+          <%= link_to "Check Out", cart_path(order_id: @order.id, id: @account), class: 'cart-image' %>
+          <%= link_to '', cart_path(order_id: @order.id, id: @account), class: 'fa fa-shopping-cart fa-3x fa-fw cart-image' %>
+          <%= number_to_currency(@order.subtotal) %>
+        <% end %>
+      </div>
   </div>
 </div>
+
 <div class="container">
   <%= link_to 'Return to Order', account_order_path(@account, @order), class: 'btn btn-outline-secondary add-to-cart-button' %>
 </div>

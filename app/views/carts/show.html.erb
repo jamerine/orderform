@@ -1,4 +1,5 @@
 <%= render partial: 'layouts/header', locals: { account: @account, order: @order } %>
+
 <div class="container">
   <%= link_to 'Return to Order', account_order_path(@account, @order), class: 'btn btn-outline-secondary add-to-cart-button' %>
   <%= render "shopping_cart" %>
