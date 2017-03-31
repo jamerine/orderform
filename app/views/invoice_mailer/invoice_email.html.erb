@@ -8,6 +8,9 @@
     <p>
       The order totals <b><%= number_to_currency(@order.subtotal) %></b>, consisting of:
     </p>
+    <p>
+      Product Logo: <b><%= @order.product_logo_name %></b>
+    </p>
     <br>
     <table>
       <tr>

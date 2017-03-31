@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170331140127) do
+ActiveRecord::Schema.define(version: 20170331164522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,7 +93,18 @@ ActiveRecord::Schema.define(version: 20170331140127) do
     t.boolean  "same_as_billing"
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
+    t.string   "product_logo"
+    t.string   "product_logo_name"
     t.index ["account_id"], name: "index_orders_on_account_id", using: :btree
+  end
+
+  create_table "product_logos", force: :cascade do |t|
+    t.string   "name"
+    t.string   "product_logo_image"
+    t.integer  "account_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["account_id"], name: "index_product_logos_on_account_id", using: :btree
   end
 
   create_table "products", force: :cascade do |t|
@@ -157,6 +168,7 @@ ActiveRecord::Schema.define(version: 20170331140127) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "order_items", "sizes"
+  add_foreign_key "product_logos", "accounts"
   add_foreign_key "products", "accounts"
   add_foreign_key "products_colors", "colors"
   add_foreign_key "products_colors", "products"

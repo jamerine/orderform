@@ -45,7 +45,7 @@
                   </div>
                   <div class="form-group">
                     <b><%= f.label 'Size' %></b>
-                    <%= f.select(:size_id, options_from_collection_for_select(@sizes, :id, :name_with_price)) %>
+                    <%= f.select(:size_id, options_from_collection_for_select(@sizes, :id, :name_with_price, { include_blank: true })  ) %>
                   </div>
                     <div class="form-group quantity-field">
                       <b><%= f.label 'quantity' %></b>

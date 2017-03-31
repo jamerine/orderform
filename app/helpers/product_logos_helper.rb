@@ -1,0 +1,2 @@
+module ProductLogosHelper
+end

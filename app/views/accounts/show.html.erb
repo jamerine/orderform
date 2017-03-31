@@ -32,9 +32,6 @@
     <% if current_user %>
       <div class="row justify-content-md-center">
         <div class="col col-lg-6 col-md-12">
-          <div class="row justify-content-md-center">
-            <h2>Products</h2>
-          </div>
           <br>
           <div class="card">
             <div class="card-header">
@@ -71,18 +68,10 @@
           </div>
         </div>
         <div class="col col-lg-6 col-md-12">
-          <div class="row justify-content-md-center">
-            <h2>Product Logos</h2>
-          </div>
-          <div class="row justify-content-md-center">
-            <div class="col col-md-auto">
-
-            </div>
-          </div>
           <br>
           <div class="card">
             <div class="card-header">
-              Product Logos - <%= link_to 'Add Product Logos', new_account_product_path(@account) %>
+              Product Logos - <%= link_to 'Add Product Logos', new_product_logo_path(account_id: @account.id) %>
             </div>
             <div class="card-block">
               <table class="table">
@@ -90,15 +79,15 @@
                   <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Product Number</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% @products.find_each.with_index do |prod, index| %>
+                  <% @product_logos.find_each.with_index do |logo, index| %>
                   <tr>
                     <td> <%= index + 1 %></td>
-                    <td><%= prod.name %></td>
-                    <td><%= prod.style_number %></td>
+                    <td><%= logo.name %></td>
+                    <td><%= link_to 'View', logo.product_logo_image.url %> | <%= link_to 'Delete', product_logo_path(logo.id), method: :delete %></td>
                   </tr>
                   <% end %>
                 </tbody>

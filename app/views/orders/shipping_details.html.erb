@@ -122,9 +122,13 @@
         <div class="form-group">
           <%= f.text_field :billing_branch_number, class: 'form-control', :placeholder => "Billing Branch #", required: true %>
         </div>
+        <div class="form-group">
+          <%= f.label 'Product Logos:' %>
+          <%= f.select(:id, options_from_collection_for_select(@account.product_logos, :id, :name, :selected => @account.product_logos.find_by(name: @order.product_logo_name).id), {:include_blank => 'Choose Logo' },  class: "form-control", required: true ) %>
+        </div>
         <div class="row justify-content-md-center">
           <div class="actions">
-            <%= f.submit "Send Order", class: 'btn add-to-cart-button'%>
+            <%= f.submit "Send Order", class: 'btn add-to-cart-button' %>
           </div>
         </div>
       <% end %>
@@ -172,7 +176,10 @@
       </div>
       <div class="row justify-content-end">
         <p>shipping not included</p>
-        <p><%= link_to 'PDF', account_order_order_invoice_pdf_path(@account, @order, format: :pdf)  %></p>
+        <br>
+      </div>
+      <div class="row justify-content-end">
+        <p><%= link_to 'View Invoice Preview', account_order_order_invoice_pdf_path(@account, @order, format: :pdf) %></p>
       </div>
     </div>
   </div>

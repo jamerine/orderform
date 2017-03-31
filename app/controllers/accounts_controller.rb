@@ -20,6 +20,7 @@ class AccountsController < ApplicationController
 
   def show
     @products = @account.products
+    @product_logos = @account.product_logos
   end
 
   def edit

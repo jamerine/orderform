@@ -30,4 +30,6 @@ Rails.application.routes.draw do
 
   resources :sizes
 
+  resources :product_logos
+
 end

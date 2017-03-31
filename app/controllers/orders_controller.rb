@@ -16,6 +16,8 @@ class OrdersController < ApplicationController
   def create
     @account = Account.find(params[:account_id])
     @order = @account.orders.new(order_params)
+    @product_logo = @account.product_logos.find(params[:order][:id])
+    @order.assign_attributes(product_logo: @product_logo.product_logo_image, product_logo_name: @product_logo.name)
     if params[:order][:same_as_billing]
       @order.assign_attributes(
       shipping_first_name: params[:order][:billing_first_name],
@@ -47,6 +49,8 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:order_id])
     @account = @order.account
     @order.assign_attributes(order_params)
+    @product_logo = @account.product_logos.find(params[:order][:id])
+    @order.assign_attributes(product_logo: @product_logo.product_logo_image, product_logo_name: @product_logo.name)
     @order.assign_attributes(status: 1)
     if @order.save
       pdf = OrderInvoicePdf.new(@account, @order, view_context)
@@ -75,7 +79,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:shipping_first_name, :shipping_last_name, :shipping_email, :shipping_phone_number, :shipping_address_line_1, :shipping_address_line_2, :shipping_city, :shipping_state, :shipping_zip_code, :billing_first_name, :billing_last_name, :billing_email, :billing_phone_number, :billing_address_line_1, :billing_address_line_2, :billing_city, :billing_state, :billing_zip_code, :order_id, :account_id, :same_as_billing,  :status, :subtotal, :tax, :shipping, :total, :shipping_branch_number, :billing_branch_number)
+    params.require(:order).permit(:shipping_first_name, :shipping_last_name, :shipping_email, :shipping_phone_number, :shipping_address_line_1, :shipping_address_line_2, :shipping_city, :shipping_state, :shipping_zip_code, :billing_first_name, :billing_last_name, :billing_email, :billing_phone_number, :billing_address_line_1, :billing_address_line_2, :billing_city, :billing_state, :billing_zip_code, :order_id, :account_id, :same_as_billing,  :status, :subtotal, :tax, :shipping, :total, :shipping_branch_number, :billing_branch_number, :product_logo, :product_logo_name)
   end
 
 end

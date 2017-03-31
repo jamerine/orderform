@@ -57,6 +57,9 @@ class OrderInvoicePdf < Prawn::Document
 
   def order_details
     text "Order Details:", size: 12, style: :bold
+    move_down 5
+    text "Product Logo: #{@order.product_logo_name}"
+    move_down 5
     table order_details_data, :column_widths => { 0 => 140, 1 => 90, 2 => 100, 3 => 65, 4 => 70, 5 => 70 } do
       self.position = :center
       row(0).font_style = :bold

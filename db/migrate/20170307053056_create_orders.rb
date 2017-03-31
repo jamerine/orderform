@@ -30,6 +30,7 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.boolean :same_as_billing
 
 
+
       t.timestamps
     end
   end

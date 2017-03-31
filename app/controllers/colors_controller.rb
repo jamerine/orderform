@@ -12,16 +12,16 @@ class ColorsController < ApplicationController
     redirect_to account_product_path(account_id: @product.account_id, id: @product), notice: "Size has been created."
   end
 
-    def destroy
-      @products_colors = ProductsColor.where(color_id: params[:id])
-      @products_colors.destroy_all
-      @color = Color.find(params[:id])
-      if @color.destroy
-        redirect_to new_color_path(product_id: params[:product_id]), notice: "Color has been deleted"
-      else
-        redirect_to new_color_path(product_id: params[:product_id]), notice: "There has been an issue deleting the color"
-      end
+  def destroy
+    @products_colors = ProductsColor.where(color_id: params[:id])
+    @products_colors.destroy_all
+    @color = Color.find(params[:id])
+    if @color.destroy
+      redirect_to new_color_path(product_id: params[:product_id]), notice: "Color has been deleted"
+    else
+      redirect_to new_color_path(product_id: params[:product_id]), notice: "There has been an issue deleting the color"
     end
+  end
 
 
   private
