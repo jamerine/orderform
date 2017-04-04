@@ -3,13 +3,13 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @account = @order.account
-    @products = @account.products
+    @products = @account.products.order(:ordering_number)
     @order_items = @order.order_items
   end
 
   def new
     @account = Account.find(params[:account_id])
-    @products = @account.products
+    @products = @account.products.order(:ordering_number)
     @order = @account.orders.new(account_id: @account)
   end
 

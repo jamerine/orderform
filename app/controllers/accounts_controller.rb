@@ -19,7 +19,7 @@ class AccountsController < ApplicationController
   end
 
   def show
-    @products = @account.products
+    @products = @account.products.order(:ordering_number)
     @product_logos = @account.product_logos
   end
 
@@ -41,7 +41,7 @@ class AccountsController < ApplicationController
 
   def order_form
     @account = Account.find(params[:account_id])
-    @products = @account.products
+    @products = @account.products.order(:ordering_number)
     @order_items = current_order.order_items
   end
 

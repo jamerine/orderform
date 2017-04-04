@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170331164522) do
+ActiveRecord::Schema.define(version: 20170404005324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,11 +52,12 @@ ActiveRecord::Schema.define(version: 20170331164522) do
     t.integer  "size_id"
     t.integer  "color_id"
     t.integer  "order_id"
-    t.decimal  "unit_price",  precision: 12, scale: 2
+    t.decimal  "unit_price",      precision: 12, scale: 2
     t.integer  "quantity"
-    t.decimal  "total_price", precision: 12, scale: 2
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.decimal  "total_price",     precision: 12, scale: 2
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "ordering_number"
     t.index ["color_id"], name: "index_order_items_on_color_id", using: :btree
     t.index ["order_id"], name: "index_order_items_on_order_id", using: :btree
     t.index ["product_id"], name: "index_order_items_on_product_id", using: :btree
@@ -111,7 +112,7 @@ ActiveRecord::Schema.define(version: 20170331164522) do
     t.string   "name",                            null: false
     t.string   "description",                     null: false
     t.string   "item_number"
-    t.string   "style_number",                    null: false
+    t.integer  "ordering_number",                 null: false
     t.string   "vendor"
     t.boolean  "active",           default: true
     t.string   "product_page_url"
