@@ -3,7 +3,7 @@
       <div class="col-1 p-2 offset-1">
         <%= image_tag(@account.logo_url, class: 'd-flex align-self-center header-logo-image' )%>
       </div>
-      <div class="col-3 p-3">
+      <div class="col-4 p-3">
         <h1><%= @account.business_name %></h1>
         <h3 class="text-muted"> <%= @account.order_form_subheading %>    </h3>
         <p class="text-muted">Orders due by <%= @account.try(:orders_due_by).try(:strftime, "%B %d, %Y") %></p>
