@@ -79,7 +79,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:shipping_first_name, :shipping_last_name, :shipping_email, :shipping_phone_number, :shipping_address_line_1, :shipping_address_line_2, :shipping_city, :shipping_state, :shipping_zip_code, :billing_first_name, :billing_last_name, :billing_email, :billing_phone_number, :billing_address_line_1, :billing_address_line_2, :billing_city, :billing_state, :billing_zip_code, :order_id, :account_id, :same_as_billing,  :status, :subtotal, :tax, :shipping, :total, :shipping_branch_number, :billing_branch_number, :product_logo, :product_logo_name)
+    params.require(:order).permit(:shipping_first_name, :shipping_last_name, :shipping_email, :shipping_phone_number, :shipping_address_line_1, :shipping_address_line_2, :shipping_city, :shipping_state, :shipping_zip_code, :billing_first_name, :billing_last_name, :billing_email, :billing_phone_number, :billing_address_line_1, :billing_address_line_2, :billing_city, :billing_state, :billing_zip_code, :order_id, :account_id, :same_as_billing,  :status, :subtotal, :tax, :shipping, :total, :shipping_branch_number, :billing_branch_number, :product_logo, :product_logo_name, :pc_id_number)
   end
 
 end

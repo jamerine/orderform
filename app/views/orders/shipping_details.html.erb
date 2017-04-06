@@ -70,7 +70,18 @@
           </div>
         </div>
         <div class="form-group">
-          <%= f.text_field :shipping_branch_number, class: 'form-control', :placeholder => "Shipping Branch #", required: true %>
+          <div class="row">
+              <div class="col-6">
+                <label>Shipping Branch #:</label>
+                <%= f.text_field :shipping_branch_number, class: 'form-control', :placeholder => "Shipping Branch #", required: true %>
+              </div>
+            <% if @order.account.id == 1 %>
+              <div class="col-6">
+                <label>PC ID #:</label>
+                <%= f.text_field :pc_id_number, class: 'form-control', :placeholder => "PC ID Number", required:true %>
+              </div>
+            <% end %>
+          </div>
         </div>
 
         <br>
@@ -120,6 +131,7 @@
           </div>
         </div>
         <div class="form-group">
+          <label>Billing Branch #:</label>
           <%= f.text_field :billing_branch_number, class: 'form-control', :placeholder => "Billing Branch #", required: true %>
         </div>
         <div class="form-group">
