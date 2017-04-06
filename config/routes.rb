@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       post :shipping_details_save
       resources :order_items do
         delete :delete_item
+
+        collection { post :create_multiple }
       end
       get :order_invoice_pdf
     end

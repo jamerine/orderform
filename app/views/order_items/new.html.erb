@@ -31,29 +31,43 @@
               <% end %>
           </div>
             <div class="col-6">
-              <%= form_for [@account, @order, @order_item] do |f| %>
+              <%= form_for [@account, @order, @order_item], url: create_multiple_account_order_order_items_path, method: :post do |f| %>
                   <p class="new-order-item-header"><b><%= @product.name %>: <%= number_to_currency(@product.sizes.first.price) %></b></p>
                   <p><b>Description:</b> <%= @product.description %></p>
                   <br>
                   <p><b>Item Number:</b> <%= @product.item_number %></p>
                   <br>
                   <%= f.hidden_field :product_id, value: "#{@product.id}" %>
-                  <%= f.hidden_field :order_id, value: "#{@account.id}" %>
+                  <%= f.hidden_field :order_id, value: "#{@order.id}" %>
                   <%= f.hidden_field :ordering_number, value: "#{@product.ordering_number}" %>
                   <div class="form-group">
                     <b><%= f.label 'Color' %></b>
                     <%= f.select(:color_id, options_from_collection_for_select(@colors, :id, :name)) %>
                   </div>
-                  <div class="form-group">
-                    <b><%= f.label 'Size' %></b>
-                    <%= f.select(:size_id, options_from_collection_for_select(@sizes, :id, :name_with_price, { include_blank: true })  ) %>
-                  </div>
-                    <div class="form-group quantity-field">
-                      <b><%= f.label 'quantity' %></b>
-                      <%= f.number_field :quantity, class: 'form-control', required: true, min: 1 %>
+                  <div class="row">
+                    <div class="col-3">
+                      <b><label>Sizes:</label></b>
                     </div>
-                      <div class="actions">
-                    <%= f.submit "Add To Cart", class: 'btn add-to-cart-button' %>
+                    <div class="col-3">
+                      <b><label>Quantities:</label></b>
+                    </div>
+                  </div>
+                  <% @order_items_collection.each do |order_item| %>
+                    <%= fields_for 'size_collection[]', order_item do |ff| %>
+                      <%= ff.hidden_field :size_id, value: "#{order_item.size_id}" %>
+                      <div class="row">
+                        <div class="form-group col-3">
+                          <b><%= Size.find(order_item.size_id).name %></b>
+                        </div>
+                        <div class="form-group quantity-field col-3">
+                          <%= ff.number_field :quantity, class: 'form-control', required: true %>
+                        </div>
+                      </div>
+                    <% end %>
+                  <% end %>
+
+                    <div class="actions">
+                      <%= f.submit "Add To Cart", class: 'btn add-to-cart-button' %>
                     </div>
                   <br>
               <% end %>
