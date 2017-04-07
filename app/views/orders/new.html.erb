@@ -56,7 +56,7 @@
             </div>
             <% if @order.account.id == 1 %>
               <div class="col-6">
-                <%= f.text_field :pc_id_number, class: 'form-control', :placeholder => "PC ID Number", required:true %>
+                <%= f.text_field :pc_id_number, class: 'form-control', :placeholder => "PC ID #", required:true %>
               </div>
             <% end %>
           </div>
@@ -131,7 +131,11 @@
       <%= f.select(:id, options_from_collection_for_select(@account.product_logos, :id, :name), {:include_blank => 'Choose Logo'},  class: "form-control", required: true ) %>
     </div>
   </div>
-
+  <% unless @account.order_special_message.nil? %>
+    <div class="row justify-content-md-center">
+        <b><p><%= @account.order_special_message %></p></b>
+    </div>
+  <% end %>
   <div class="row justify-content-md-center">
     <div class="actions">
       <%= f.submit "Start Bulk Order", class: 'btn add-to-cart-button'%>
@@ -139,3 +143,4 @@
   </div>
   <% end %>
 </div>
+<br>

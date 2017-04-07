@@ -95,6 +95,11 @@
             </div>
 
             <div class="form-group">
+              <%= f.label :order_special_message %><br />
+              <%= f.text_area :order_special_message, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
               <%= f.label :orders_due_by %><br />
               <%= f.date_field :orders_due_by, class: 'form-control' %>
             </div>

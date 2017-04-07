@@ -50,6 +50,7 @@ class OrderInvoicePdf < Prawn::Document
       text "#{ @order.billing_phone_number}", size: 11, :indent_paragraphs => 30
       text "#{ @order.billing_email}", size: 11, :indent_paragraphs => 30
       text "Branch #: #{ @order.billing_branch_number}", size: 11, :indent_paragraphs => 30
+      text "PC ID #: #{ @order.pc_id_number}", size: 11, :indent_paragraphs => 30
       transparent(0) { stroke_bounds }
     end
 
