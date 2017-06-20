@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: [:show, :edit, :update, :destroy]
+  # before_action :set_account, only: [:show, :edit, :update, :destroy, :inactive_landing]
 
   def new
     @account = Account.new
@@ -19,8 +19,10 @@ class AccountsController < ApplicationController
   end
 
   def show
+    @account = Account.find(params[:id])
     @products = @account.products.order(:ordering_number)
     @product_logos = @account.product_logos
+
   end
 
   def edit
@@ -54,15 +56,19 @@ class AccountsController < ApplicationController
     end
   end
 
+  def inactive_landing
+    @account = Account.find(params[:account_id])
+  end
+
   private
 
   def set_account
-    @account = Account.find(params[:id])
+
   end
 
   def account_params
     params.require(:account).permit(:business_name, :contact_first_name, :contact_last_name, :address_line_1, :address_line_2, :address_line_2, :city,
-        :state, :zip_code, :country, :website, :phone_number, :phone_number_extension, :fax_number, :email_address, :subdomain, :logo, :order_form_subheading, :orders_due_by, :order_special_message
+        :state, :zip_code, :country, :website, :phone_number, :phone_number_extension, :fax_number, :email_address, :subdomain, :logo, :order_form_subheading, :orders_due_by, :order_special_message, :active
     )
   end
 

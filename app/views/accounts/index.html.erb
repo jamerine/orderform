@@ -31,7 +31,7 @@
     <tbody>
       <% @accounts.each do |a| %>
       <tr>
-        <th scope="row"> <%= link_to 'view', account_path(a),  class: 'btn btn-outline-secondary btn-sm' %> </th>
+        <th scope="row"> <%= link_to 'view', account_path(id: a.id),  class: 'btn btn-outline-secondary btn-sm' %> </th>
         <td><%= a.business_name %></td>
         <td><%= a.subdomain %></td>
         <td><%= a.email_address %></td>

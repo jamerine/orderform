@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   resources :accounts do
+    get :inactive_landing
+    
     resources :products do
       delete :color
       delete :size

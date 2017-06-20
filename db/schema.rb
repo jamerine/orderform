@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407163449) do
+ActiveRecord::Schema.define(version: 20170620155719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170407163449) do
     t.string   "order_form_subheading"
     t.date     "orders_due_by"
     t.text     "order_special_message"
+    t.boolean  "active"
     t.index ["subdomain"], name: "index_accounts_on_subdomain", unique: true, using: :btree
   end
 
