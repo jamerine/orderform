@@ -54,11 +54,9 @@
             <div class="col-6">
               <%= f.text_field :billing_branch_number, class: 'form-control', :placeholder => "Billing Branch #", required: true %>
             </div>
-            <% if @order.account.id == 1 %>
-              <div class="col-6">
-                <%= f.text_field :pc_id_number, class: 'form-control', :placeholder => "PC ID #", required:true %>
-              </div>
-            <% end %>
+            <div class="col-6">
+              <%= f.text_field :pc_id_number, class: 'form-control', :placeholder => "PC ID #", required:true %>
+            </div>
           </div>
         </div>
 
