@@ -4,9 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h4>Thank you for ordering from <%= @account.business_name %>, <%= @order.billing_first_name %></h4>
+    <h4>Thank you for your <%= @account.business_name %> Order!</h4>
     <p>
-      You have successfully created a bulk order that is now being processed by MMPR, Inc.
+      You have successfully created a promo order that is now being processed by MMPR, Inc.
     </p>
     <p>
       Your order, totaling <b><%= number_to_currency(@order.subtotal) %></b>, consists of:
@@ -16,7 +16,7 @@
         <li><%= item.product.name %> - <%= item.size.name %> * <%= item.quantity %> @ <%= number_to_currency(item.total_price) %></li>
       <% end %>
     </ul>
-    <p>Delivery time will be approx. 3 weeks after orders are received. A final invoice including shipping charges will be emailed upon fulfillment of the order.</p>
+    <p>Please allow 5 - 10 business days for production. Delivery times will vary according to your location. A final invoice including the shipping charges will be emailed upon fulfillment of your completed order.</p>
     <h3>Questions?</h3>
     <p>Contact <%= @account.contact_first_name %>:</p>
     <p>Phone: <%= @account.phone_number %></p>
