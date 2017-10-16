@@ -4,7 +4,7 @@ class OrderItem < ApplicationRecord
   belongs_to :color
   belongs_to :size
 
-  default_scope { order(ordering_number: :asc) } 
+  default_scope { order(ordering_number: :asc) }
 
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
