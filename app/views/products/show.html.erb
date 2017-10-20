@@ -18,6 +18,7 @@
             <li><b>Item Number:</b> <%= @product.item_number %></li>
             <li><b>Ordering Number:</b> <%= @product.ordering_number %></li>
             <li><b>Product Page:</b> <%= link_to 'Website Link', @product.product_page_url, target: :_blank %></li>
+            <li><b>Hide Display Price:</b> <%= @product.hide_display_price.nil? || !@product.hide_display_price ? "False" : "True" %></li>
           </ul>
         </div>
       </div>

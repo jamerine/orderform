@@ -12,7 +12,7 @@
                 <p><%= product.name %></p>
               </div>
               <div class="col col-2 offset-1">
-                <p><%= number_to_currency(product.sizes.first.price) %></p>
+                <p><%= number_to_currency(product.sizes.first.price) unless product.hide_display_price %></p>
               </div>
           </div>
           <div class="card-block">
