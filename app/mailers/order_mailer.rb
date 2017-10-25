@@ -5,7 +5,7 @@ class OrderMailer < ApplicationMailer
     @order = Order.find(order_id)
     pdf = OrderInvoicePdf.new(@account, @order, view_context)
     attachments["order_invoice.pdf"] = { :mime_type => 'application/pdf', :content => pdf.render }
-    mail(:to => @order.shipping_email, :subject => "#{ @account.business_name } Bulk Order", :from => @account.email_address)
+    mail(:to => @order.shipping_email, :subject => "#{ @account.business_name } Holiday Promo", :from => @account.email_address)
   end
 
 end
