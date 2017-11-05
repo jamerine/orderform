@@ -107,6 +107,11 @@
               <%= f.file_field :logo, class: 'form-control', required: true  %>
             </div>
 
+            <div class="form-group">
+              <%= f.label 'Account Favicon Image' %>
+              <%= f.file_field :favicon_image, class: 'form-control', required: true  %>
+            </div>
+
             <div class="actions">
               <%= f.submit "Create", class: 'btn btn-outline-secondary' %>
             </div>

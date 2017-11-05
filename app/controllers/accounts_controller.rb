@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  # before_action :set_account, only: [:show, :edit, :update, :destroy, :inactive_landing]
+  before_action :set_account, only: [:show, :edit, :update, :destroy, :order_form]
 
   def new
     @account = Account.new
@@ -16,22 +16,19 @@ class AccountsController < ApplicationController
 
   def index
     @accounts = Account.all
+    session[:account_id] = nil
   end
 
   def show
-    @account = Account.find(params[:id])
     @products = @account.products.order(:ordering_number)
     @product_logos = @account.product_logos
-
   end
 
   def edit
-    @account = Account.find(params[:id])
   end
 
 
   def update
-    @account = Account.find(params[:id])
     @account.assign_attributes(account_params)
     if @account.save
       redirect_to account_path(@account), notice: 'Account has been updated successfully!'
@@ -42,13 +39,11 @@ class AccountsController < ApplicationController
 
 
   def order_form
-    @account = Account.find(params[:account_id])
     @products = @account.products.order(:ordering_number)
     @order_items = current_order.order_items
   end
 
   def destroy
-    @account = Account.find(params[:id])
     if @account.destroy
       redirect_to accounts_path, notice: 'Account deleted successfully.'
     else
@@ -63,12 +58,13 @@ class AccountsController < ApplicationController
   private
 
   def set_account
-
+    @account = Account.find(params[:id])
+    session[:account_id] = @account.id
   end
 
   def account_params
     params.require(:account).permit(:business_name, :contact_first_name, :contact_last_name, :address_line_1, :address_line_2, :address_line_2, :city,
-        :state, :zip_code, :country, :website, :phone_number, :phone_number_extension, :fax_number, :email_address, :subdomain, :logo, :order_form_subheading, :orders_due_by, :order_special_message, :active
+        :state, :zip_code, :country, :website, :phone_number, :phone_number_extension, :fax_number, :email_address, :subdomain, :logo, :order_form_subheading, :orders_due_by, :order_special_message, :active, :favicon_image
     )
   end
 
