@@ -33,7 +33,7 @@ class AccountsController < ApplicationController
     if @account.save
       redirect_to account_path(@account), notice: 'Account has been updated successfully!'
     else
-      redirect_to edit_account_path(@account), notice: 'Account has been created successfully!'
+      redirect_to edit_account_path(@account), alert: 'There was an issue updating this account. Please try again!'
     end
   end
 

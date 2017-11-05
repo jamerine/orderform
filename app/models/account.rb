@@ -6,6 +6,7 @@ class Account < ApplicationRecord
   mount_uploader :logo, LogoUploader
   mount_uploader :favicon_image, FaviconImageUploader
 
+  validates :subdomain, uniqueness: true
 
 
 end
