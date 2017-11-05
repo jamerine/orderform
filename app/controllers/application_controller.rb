@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   def current_account_favicon
     if !session[:account_id].nil?
       account = Account.find(session[:account_id])
-      if account.favicon_image.nil?
+      if account.favicon_image_url.nil?
         'shopping-cart-favicon.jpg'
       else
         account.favicon_image_url
