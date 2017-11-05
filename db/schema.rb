@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171105181511) do
+ActiveRecord::Schema.define(version: 20171105190521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20171105181511) do
     t.text     "order_special_message"
     t.boolean  "active"
     t.string   "favicon_image"
+    t.boolean  "require_pc_id_number"
     t.index ["subdomain"], name: "index_accounts_on_subdomain", unique: true, using: :btree
   end
 

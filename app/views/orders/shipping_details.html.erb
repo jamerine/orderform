@@ -75,7 +75,7 @@
                 <label>Shipping Branch #:</label>
                 <%= f.text_field :shipping_branch_number, class: 'form-control', :placeholder => "Shipping Branch #", required: true %>
               </div>
-            <% if @order.account.id == 1 %>
+            <% if @order.account.require_pc_id_number%>
               <div class="col-6">
                 <label>PC ID #:</label>
                 <%= f.text_field :pc_id_number, class: 'form-control', :placeholder => "PC ID #", required: true %>

@@ -110,6 +110,11 @@
             </div>
 
             <div class="form-group">
+              <%= f.label :require_pc_id_number %><br />
+              <%= f.check_box :require_pc_id_number, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
               <%= f.label 'Account Logo' %>
               <%= f.file_field :logo, class: 'form-control'  %>
             </div>
@@ -118,6 +123,7 @@
               <%= f.label 'Account Favicon Image' %>
               <%= f.file_field :favicon_image, class: 'form-control'  %>
             </div>
+
 
             <div class="actions">
               <%= f.submit "Update", class: 'btn btn-outline-secondary' %>
