@@ -11,6 +11,10 @@ class OrdersController < ApplicationController
     @account = Account.find(params[:account_id])
     @products = @account.products.order(:ordering_number)
     @order = @account.orders.new(account_id: @account)
+    if !@account.active?
+      redirect_to @account
+    end
+
   end
 
   def create
